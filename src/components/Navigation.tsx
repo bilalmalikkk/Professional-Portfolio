@@ -20,7 +20,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-200">
             <Home className="w-6 h-6 text-white font-bold" />
-            <span className="text-xl font-semibold text-white"></span>
+            <span className="text-xl font-semibold text-white">Bilal's Portfolio</span>
           </Link>
           
           {/* Desktop Navigation */}
