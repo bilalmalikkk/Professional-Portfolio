@@ -1,0 +1,95 @@
+{
+  "profile": {
+    "photo": "/src/assets/profile-photo.jpg",
+    "alt": "Bilal Malik - Full Stack Developer"
+  },
+  "projects": {
+    "catchcollect": {
+      "desktop": "/src/assets/Catch-Collect1.png",
+      "mobile": "/src/assets/Catch-Collect2.png",
+      "alt": "Catch Collect Platform"
+    },
+    "pearstop": {
+      "desktop": "/src/assets/Pearstop1.png",
+      "mobile": "/src/assets/Pearstop1.png",
+      "alt": "Pearstop Solutions"
+    },
+    "collectorhomebase": {
+      "desktop": "/src/assets/Collector-HomeBase1.png",
+      "mobile": "/src/assets/Collector-HomeBase2.png",
+      "alt": "Collector HomeBase"
+    },
+    "visiondirect": {
+      "desktop": "/src/assets/Vision-Direct1.png",
+      "mobile": "/src/assets/Vision-Direct2.png",
+      "alt": "Vision Direct - AI-Powered Eye Care Platform"
+    },
+    "mihub": {
+      "desktop": "/src/assets/Mi-Hub1.png",
+      "mobile": "/src/assets/Mi-Hub2.png",
+      "alt": "Mi Hub"
+    },
+    "collectorhomebase2": {
+      "desktop": "/src/assets/Collector-HomeBase2.png",
+      "mobile": "/src/assets/Collector-HomeBase2.png",
+      "alt": "Collector HomeBase Mobile"
+    },
+    "catchcollect2": {
+      "desktop": "/src/assets/Catch-Collect2.png",
+      "mobile": "/src/assets/Catch-Collect2.png",
+      "alt": "Catch Collect Enhanced"
+    },
+    "visiondirect2": {
+      "desktop": "/src/assets/Vision-Direct2.png",
+      "mobile": "/src/assets/Vision-Direct2.png",
+      "alt": "Vision Direct Pro"
+    },
+    "mihub2": {
+      "desktop": "/src/assets/Mi-Hub2.png",
+      "mobile": "/src/assets/Mi-Hub2.png",
+      "alt": "Mi Hub Enterprise"
+    }
+  },
+  "testimonials": {
+    "sarah": {
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      "alt": "Sarah Johnson - CEO, TechStart Inc."
+    },
+    "michael": {
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      "alt": "Michael Chen - Founder, MobileFlow"
+    },
+    "emily": {
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      "alt": "Emily Rodriguez - Design Director, CreativeCo"
+    },
+    "david": {
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      "alt": "David Thompson - CTO, DataFlow Solutions"
+    },
+    "lisa": {
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+      "alt": "Lisa Wang - Product Manager, ShopEasy"
+    },
+    "james": {
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+      "alt": "James Wilson - Startup Founder, InnovateLab"
+    }
+  },
+  "icons": {
+    "logo": {
+      "grid": "/src/assets/logo-grid.svg",
+      "alt": "Portfolio Logo"
+    },
+    "placeholder": {
+      "image": "/src/assets/placeholder.svg",
+      "alt": "Placeholder Image"
+    }
+  },
+  "backgrounds": {
+    "hero": {
+      "gradient": "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)",
+      "pattern": "/src/assets/hero-pattern.svg"
+    }
+  }
+} 
