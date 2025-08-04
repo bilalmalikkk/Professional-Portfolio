@@ -77,10 +77,6 @@
     }
   },
   "icons": {
-    "logo": {
-      "grid": "/src/assets/logo-grid.svg",
-      "alt": "Portfolio Logo"
-    },
     "placeholder": {
       "image": "/src/assets/placeholder.svg",
       "alt": "Placeholder Image"
