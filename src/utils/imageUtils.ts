@@ -16,6 +16,36 @@ interface TestimonialImage {
   alt: string;
 }
 
+// Import all project images for Vite to handle them properly
+import CatchCollect1 from '@/assets/Catch-Collect1.png';
+import CatchCollect2 from '@/assets/Catch-Collect2.png';
+import CatchCollect3 from '@/assets/Catch-Collect3.png';
+import Pearstop1 from '@/assets/Pearstop1.png';
+import CollectorHomeBase1 from '@/assets/Collector-HomeBase1.png';
+import CollectorHomeBase2 from '@/assets/Collector-HomeBase2.png';
+import VisionDirect1 from '@/assets/Vision-Direct1.png';
+import VisionDirect2 from '@/assets/Vision-Direct2.png';
+import MiHub1 from '@/assets/Mi-Hub1.png';
+import MiHub2 from '@/assets/Mi-Hub2.png';
+import profilePhoto from '@/assets/profile-photo.jpg';
+import placeholderSvg from '@/assets/placeholder.svg';
+
+// Create a mapping for imported assets
+const assetMap: { [key: string]: string } = {
+  '/src/assets/Catch-Collect1.png': CatchCollect1,
+  '/src/assets/Catch-Collect2.png': CatchCollect2,
+  '/src/assets/Catch-Collect3.png': CatchCollect3,
+  '/src/assets/Pearstop1.png': Pearstop1,
+  '/src/assets/Collector-HomeBase1.png': CollectorHomeBase1,
+  '/src/assets/Collector-HomeBase2.png': CollectorHomeBase2,
+  '/src/assets/Vision-Direct1.png': VisionDirect1,
+  '/src/assets/Vision-Direct2.png': VisionDirect2,
+  '/src/assets/Mi-Hub1.png': MiHub1,
+  '/src/assets/Mi-Hub2.png': MiHub2,
+  '/src/assets/profile-photo.jpg': profilePhoto,
+  '/src/assets/placeholder.svg': placeholderSvg,
+};
+
 // Utility function to get image data
 export const getImage = (path: string): string => {
   const keys = path.split('.');
@@ -33,9 +63,14 @@ export const getImage = (path: string): string => {
   return current;
 };
 
+// Function to resolve asset paths for production
+export const resolveAssetPath = (path: string): string => {
+  return assetMap[path] || path;
+};
+
 // Specific getter functions for better type safety
 export const getProfileImage = (): { src: string; alt: string } => ({
-  src: imagesData.profile.photo,
+  src: resolveAssetPath(imagesData.profile.photo),
   alt: imagesData.profile.alt
 });
 
@@ -49,7 +84,11 @@ export const getProjectImages = (projectName: string): ProjectImages => {
       alt: ''
     };
   }
-  return project as ProjectImages;
+  return {
+    desktop: resolveAssetPath(project.desktop),
+    mobile: resolveAssetPath(project.mobile),
+    alt: project.alt
+  };
 };
 
 export const getTestimonialImage = (name: string): TestimonialImage => {
@@ -74,7 +113,7 @@ export const getIconImage = (iconName: string): { src: string; alt: string } => 
     };
   }
   return {
-    src: icon.grid || icon.image,
+    src: resolveAssetPath(icon.grid || icon.image),
     alt: icon.alt
   };
 };
