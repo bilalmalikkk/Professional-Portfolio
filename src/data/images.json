@@ -77,9 +77,9 @@
     }
   },
   "icons": {
-    "placeholder": {
-      "image": "/src/assets/placeholder.svg",
-      "alt": "Placeholder Image"
+    "handshake": {
+      "image": "/src/assets/HandShake.svg",
+      "alt": "Handshake Icon"
     }
   },
   "backgrounds": {

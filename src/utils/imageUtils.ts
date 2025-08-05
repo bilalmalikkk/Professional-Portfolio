@@ -28,7 +28,7 @@ import VisionDirect2 from '@/assets/Vision-Direct2.png';
 import MiHub1 from '@/assets/Mi-Hub1.png';
 import MiHub2 from '@/assets/Mi-Hub2.png';
 import profilePhoto from '@/assets/profile-photo.jpg';
-import placeholderSvg from '@/assets/placeholder.svg';
+import handShakeSvg from '@/assets/HandShake.svg';
 
 // Create a mapping for imported assets
 const assetMap: { [key: string]: string } = {
@@ -43,7 +43,7 @@ const assetMap: { [key: string]: string } = {
   '/src/assets/Mi-Hub1.png': MiHub1,
   '/src/assets/Mi-Hub2.png': MiHub2,
   '/src/assets/profile-photo.jpg': profilePhoto,
-  '/src/assets/placeholder.svg': placeholderSvg,
+  '/src/assets/HandShake.svg': handShakeSvg,
 };
 
 // Utility function to get image data
