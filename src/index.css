@@ -75,6 +75,51 @@
   100% { background-position: 0% 50%; }
 }
 
+/* Handshake Animation Keyframes */
+@keyframes handshake-left {
+  0%, 100% { transform: rotate(12deg) translateX(0); }
+  25% { transform: rotate(15deg) translateX(-2px); }
+  50% { transform: rotate(10deg) translateX(2px); }
+  75% { transform: rotate(13deg) translateX(-1px); }
+}
+
+@keyframes handshake-right {
+  0%, 100% { transform: rotate(-12deg) translateX(0); }
+  25% { transform: rotate(-15deg) translateX(2px); }
+  50% { transform: rotate(-10deg) translateX(-2px); }
+  75% { transform: rotate(-13deg) translateX(1px); }
+}
+
+@keyframes sparkle-1 {
+  0%, 100% { opacity: 0.3; transform: rotate(45deg) scale(0.8); }
+  50% { opacity: 1; transform: rotate(45deg) scale(1.2); }
+}
+
+@keyframes sparkle-2 {
+  0%, 100% { opacity: 0.3; transform: rotate(45deg) scale(0.8); }
+  50% { opacity: 1; transform: rotate(45deg) scale(1.2); }
+}
+
+@keyframes sparkle-3 {
+  0%, 100% { opacity: 0.3; transform: rotate(45deg) scale(0.8); }
+  50% { opacity: 1; transform: rotate(45deg) scale(1.2); }
+}
+
+@keyframes dash-1 {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(4px); }
+}
+
+@keyframes dash-2 {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(-3px); }
+}
+
+@keyframes dash-3 {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(2px); }
+}
+
 /* Custom scrollbar styles for modals */
 @layer utilities {
   .scrollbar-thin {

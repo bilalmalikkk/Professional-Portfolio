@@ -3,15 +3,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import HandshakeAnimation from "./HandshakeAnimation";
 
 const Contact = () => {
   return (
     <section className="py-20 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Section - Heading and Illustration */}
-          <div className="space-y-8">
-            <div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Left Section - Text and Handshake */}
+          <div className="space-y-10">
+            <div className="pt-8">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
                 Let's Build Something{" "}
                 <span className="text-orange-500">Great Together</span>
@@ -22,52 +23,9 @@ const Contact = () => {
               </p>
             </div>
             
-            {/* Handshake Illustration */}
-            <div className="relative w-64 h-48 flex items-center justify-center">
-              <div className="relative w-full h-full flex items-center justify-center">
-                {/* Background circle */}
-                <div className="absolute w-32 h-32 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-full blur-xl"></div>
-                
-                {/* Handshake icon */}
-                <div className="relative z-10 flex items-center justify-center">
-                  {/* Left hand */}
-                  <div className="relative">
-                    <div className="w-16 h-20 bg-gradient-to-b from-orange-400 to-orange-600 rounded-full relative shadow-lg">
-                      {/* Fingers */}
-                      <div className="absolute top-2 left-1 w-3 h-8 bg-orange-300 rounded-full transform rotate-12"></div>
-                      <div className="absolute top-1 left-3 w-3 h-6 bg-orange-300 rounded-full transform rotate-6"></div>
-                      <div className="absolute top-0 left-5 w-3 h-7 bg-orange-300 rounded-full transform -rotate-6"></div>
-                      <div className="absolute top-1 left-7 w-3 h-5 bg-orange-300 rounded-full transform -rotate-12"></div>
-                      {/* Thumb */}
-                      <div className="absolute top-4 -left-1 w-4 h-6 bg-orange-300 rounded-full transform -rotate-45"></div>
-                    </div>
-                  </div>
-                  
-                  {/* Right hand */}
-                  <div className="relative -ml-2">
-                    <div className="w-16 h-20 bg-gradient-to-b from-gray-400 to-gray-600 rounded-full relative shadow-lg">
-                      {/* Fingers */}
-                      <div className="absolute top-2 right-1 w-3 h-8 bg-gray-300 rounded-full transform -rotate-12"></div>
-                      <div className="absolute top-1 right-3 w-3 h-6 bg-gray-300 rounded-full transform -rotate-6"></div>
-                      <div className="absolute top-0 right-5 w-3 h-7 bg-gray-300 rounded-full transform rotate-6"></div>
-                      <div className="absolute top-1 right-7 w-3 h-5 bg-gray-300 rounded-full transform rotate-12"></div>
-                      {/* Thumb */}
-                      <div className="absolute top-4 -right-1 w-4 h-6 bg-gray-300 rounded-full transform rotate-45"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Sparkles */}
-                <div className="absolute top-4 left-8">
-                  <div className="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
-                </div>
-                <div className="absolute top-6 right-12">
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse delay-1000"></div>
-                </div>
-                <div className="absolute bottom-8 left-12">
-                  <div className="w-2 h-2 bg-orange-300 rounded-full animate-pulse delay-500"></div>
-                </div>
-              </div>
+            {/* Handshake Animation below text */}
+            <div className="flex justify-center mr-12">
+              <HandshakeAnimation />
             </div>
           </div>
           
