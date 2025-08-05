@@ -3,52 +3,18 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { getProjectImages } from "@/utils/imageUtils";
+import { type Project } from "@/data/projects";
 
 interface CaseStudyModalProps {
   isOpen: boolean;
   onClose: () => void;
-  project: {
-    id: number;
-    name: string;
-    title: string;
-    description: string;
-    category: string[];
-    techStack: string[];
-    color?: string;
-    borderColor?: string;
-    icon?: React.ReactNode;
-    image?: string;
-    desktopImage?: string;
-    mobileImage?: string;
-  } | null;
+  project: Project | null;
 }
 
 const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
   if (!project) return null;
 
-  // Handle different project structures
-  const getProjectImagesData = () => {
-    if (project.desktopImage && project.mobileImage) {
-      return {
-        desktop: project.desktopImage,
-        mobile: project.mobileImage,
-        alt: project.title
-      };
-    }
-    
-    // Fallback to the original getProjectImages function
-    try {
-      return getProjectImages(project.name);
-    } catch {
-      return {
-        desktop: project.image || '',
-        mobile: project.image || '',
-        alt: project.title
-      };
-    }
-  };
-
-  const projectImages = getProjectImagesData();
+  const projectImages = getProjectImages(project.name);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -66,10 +32,10 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
               <span className="text-white/60 text-sm font-medium uppercase tracking-wider">
                 {project.name}
               </span>
-              {project.icon && (
-                <div className="text-white/60">
-                  {project.icon}
-                </div>
+              {project.featured && (
+                <Badge className="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 text-white border-orange-500/30">
+                  Featured
+                </Badge>
               )}
             </div>
 
@@ -90,6 +56,19 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
             <p className="text-white/80 text-lg leading-relaxed text-center max-w-4xl mx-auto">
               {project.description}
             </p>
+
+            {/* Project Details */}
+            <div className="flex flex-wrap gap-4 justify-center text-white/60 text-sm">
+              {project.year && (
+                <span>Year: {project.year}</span>
+              )}
+              {project.client && (
+                <span>Client: {project.client}</span>
+              )}
+              {project.duration && (
+                <span>Duration: {project.duration}</span>
+              )}
+            </div>
           </div>
 
           {/* Project Images */}
@@ -190,14 +169,25 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <Button className="px-8 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-orange-600 hover:to-yellow-600 rounded-full text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2">
-              <ExternalLink className="w-4 h-4" />
-              Live Demo
-            </Button>
-            <Button variant="outline" className="px-8 py-3 border-white/30 text-white hover:bg-white/10 rounded-full text-sm font-medium">
-              <Github className="w-4 h-4 mr-2" />
-              View Code
-            </Button>
+            {project.liveUrl && (
+              <Button 
+                className="px-8 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-orange-600 hover:to-yellow-600 rounded-full text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
+                onClick={() => window.open(project.liveUrl, '_blank')}
+              >
+                <ExternalLink className="w-4 h-4" />
+                Live Demo
+              </Button>
+            )}
+            {project.githubUrl && (
+              <Button 
+                variant="outline" 
+                className="px-8 py-3 border-white/30 text-white hover:bg-white/10 rounded-full text-sm font-medium"
+                onClick={() => window.open(project.githubUrl, '_blank')}
+              >
+                <Github className="w-4 h-4 mr-2" />
+                View Code
+              </Button>
+            )}
           </div>
         </div>
       </DialogContent>
