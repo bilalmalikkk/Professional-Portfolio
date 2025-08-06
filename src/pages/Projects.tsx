@@ -175,7 +175,7 @@ const Projects = () => {
                     <div className="relative">
                       {/* Desktop Mockup */}
                       <div className="relative mb-4">
-                        <div className="w-64 sm:w-80 md:w-96 h-32 sm:h-40 md:h-46 bg-gray-800 rounded-lg shadow-2xl border-2 sm:border-4 border-gray-700 overflow-hidden">
+                        <div className="w-64 sm:w-80 md:w-86 h-32 sm:h-40 md:h-46 bg-gray-800 rounded-lg shadow-2xl border-2 sm:border-4 border-gray-700 overflow-hidden">
                           <img 
                             src={getProjectImages(project.name).desktop} 
                             alt={getProjectImages(project.name).alt}
