@@ -83,6 +83,42 @@ import GlobalTechInnovation6 from '@/assets/projects/Global Technology Innovatio
 import GlobalTechInnovation7 from '@/assets/projects/Global Technology Innovation/7.png';
 import GlobalTechInnovation8 from '@/assets/projects/Global Technology Innovation/8.png';
 
+import IconIQWeb from '@/assets/projects/Icon-IQ/Icon-IQ.png';
+import IconIQ1 from '@/assets/projects/Icon-IQ/1.png';
+import IconIQ2 from '@/assets/projects/Icon-IQ/2.png';
+import IconIQ3 from '@/assets/projects/Icon-IQ/3.png';
+import IconIQ4 from '@/assets/projects/Icon-IQ/4.png';
+import IconIQ5 from '@/assets/projects/Icon-IQ/5.png';
+import IconIQ6 from '@/assets/projects/Icon-IQ/6.png';
+import IconIQ7 from '@/assets/projects/Icon-IQ/7.png';
+import IconIQ8 from '@/assets/projects/Icon-IQ/8.png';
+import IconIQ9 from '@/assets/projects/Icon-IQ/9.png';
+import IconIQ10 from '@/assets/projects/Icon-IQ/10.png';
+import IconIQ11 from '@/assets/projects/Icon-IQ/11.png';
+import IconIQ12 from '@/assets/projects/Icon-IQ/12.png';
+import IconIQ13 from '@/assets/projects/Icon-IQ/13.png';
+
+import ComovorunWeb from '@/assets/projects/Comovorun/Comovorun-Web.png';
+import Comovorun1 from '@/assets/projects/Comovorun/1.png';
+import Comovorun2 from '@/assets/projects/Comovorun/2.png';
+import Comovorun3 from '@/assets/projects/Comovorun/3.png';
+import Comovorun4 from '@/assets/projects/Comovorun/4.png';
+import Comovorun5 from '@/assets/projects/Comovorun/5.png';
+import Comovorun6 from '@/assets/projects/Comovorun/6.png';
+import Comovorun7 from '@/assets/projects/Comovorun/7.png';
+import Comovorun8 from '@/assets/projects/Comovorun/8.png';
+
+import StradaWeb from '@/assets/projects/Strada/Strada-Web.png';
+import Strada1 from '@/assets/projects/Strada/1.png';
+import Strada2 from '@/assets/projects/Strada/2.png';
+import Strada3 from '@/assets/projects/Strada/3.png';
+import Strada4 from '@/assets/projects/Strada/4.png';
+import Strada5 from '@/assets/projects/Strada/5.png';
+import Strada6 from '@/assets/projects/Strada/6.png';
+import Strada7 from '@/assets/projects/Strada/7.png';
+import Strada8 from '@/assets/projects/Strada/8.png';
+import Strada9 from '@/assets/projects/Strada/9.png';
+
 import profilePhoto from '@/assets/profile-photo.jpg';
 import handShakeSvg from '@/assets/HandShake.svg';
 
@@ -180,6 +216,45 @@ const assetMap: { [key: string]: string } = {
   '/src/assets/projects/Global Technology Innovation/7.png': GlobalTechInnovation7,
   '/src/assets/projects/Global Technology Innovation/8.png': GlobalTechInnovation8,
 
+  // Icon-IQ
+  '/src/assets/projects/Icon-IQ/Icon-IQ.png': IconIQWeb,
+  '/src/assets/projects/Icon-IQ/1.png': IconIQ1,
+  '/src/assets/projects/Icon-IQ/2.png': IconIQ2,
+  '/src/assets/projects/Icon-IQ/3.png': IconIQ3,
+  '/src/assets/projects/Icon-IQ/4.png': IconIQ4,
+  '/src/assets/projects/Icon-IQ/5.png': IconIQ5,
+  '/src/assets/projects/Icon-IQ/6.png': IconIQ6,
+  '/src/assets/projects/Icon-IQ/7.png': IconIQ7,
+  '/src/assets/projects/Icon-IQ/8.png': IconIQ8,
+  '/src/assets/projects/Icon-IQ/9.png': IconIQ9,
+  '/src/assets/projects/Icon-IQ/10.png': IconIQ10,
+  '/src/assets/projects/Icon-IQ/11.png': IconIQ11,
+  '/src/assets/projects/Icon-IQ/12.png': IconIQ12,
+  '/src/assets/projects/Icon-IQ/13.png': IconIQ13,
+
+  // Comovorun
+  '/src/assets/projects/Comovorun/Comovorun-Web.png': ComovorunWeb,
+  '/src/assets/projects/Comovorun/1.png': Comovorun1,
+  '/src/assets/projects/Comovorun/2.png': Comovorun2,
+  '/src/assets/projects/Comovorun/3.png': Comovorun3,
+  '/src/assets/projects/Comovorun/4.png': Comovorun4,
+  '/src/assets/projects/Comovorun/5.png': Comovorun5,
+  '/src/assets/projects/Comovorun/6.png': Comovorun6,
+  '/src/assets/projects/Comovorun/7.png': Comovorun7,
+  '/src/assets/projects/Comovorun/8.png': Comovorun8,
+
+  // Strada
+  '/src/assets/projects/Strada/Strada-Web.png': StradaWeb,
+  '/src/assets/projects/Strada/1.png': Strada1,
+  '/src/assets/projects/Strada/2.png': Strada2,
+  '/src/assets/projects/Strada/3.png': Strada3,
+  '/src/assets/projects/Strada/4.png': Strada4,
+  '/src/assets/projects/Strada/5.png': Strada5,
+  '/src/assets/projects/Strada/6.png': Strada6,
+  '/src/assets/projects/Strada/7.png': Strada7,
+  '/src/assets/projects/Strada/8.png': Strada8,
+  '/src/assets/projects/Strada/9.png': Strada9,
+
   // Other assets
   '/src/assets/profile-photo.jpg': profilePhoto,
   '/src/assets/HandShake.svg': handShakeSvg,
@@ -238,6 +313,21 @@ export const getProjectImages = (projectName: string): { desktop: string; mobile
       desktop: resolveAssetPath('/src/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Web.png'),
       mobile: resolveAssetPath('/src/assets/projects/Global Technology Innovation/Global-Technology-innovation-Mobile.png'),
       alt: "Global Technology Innovation"
+    },
+    'Icon-IQ': {
+      desktop: resolveAssetPath('/src/assets/projects/Icon-IQ/Icon-IQ.png'),
+      mobile: resolveAssetPath('/src/assets/projects/Icon-IQ/Icon-IQ.png'), // Assuming mobile is the same as desktop for now
+      alt: "Icon-IQ"
+    },
+    'Comovorun': {
+      desktop: resolveAssetPath('/src/assets/projects/Comovorun/Comovorun-Web.png'),
+      mobile: resolveAssetPath('/src/assets/projects/Comovorun/Comovorun-Web.png'), // Assuming mobile is the same as desktop for now
+      alt: "Comovorun"
+    },
+    'Strada': {
+      desktop: resolveAssetPath('/src/assets/projects/Strada/Strada-Web.png'),
+      mobile: resolveAssetPath('/src/assets/projects/Strada/Strada-Web.png'), // Assuming mobile is the same as desktop for now
+      alt: "Strada"
     }
   };
 
@@ -322,6 +412,42 @@ export const getProjectSequenceImages = (projectName: string): string[] => {
       resolveAssetPath('/src/assets/projects/Global Technology Innovation/6.png'),
       resolveAssetPath('/src/assets/projects/Global Technology Innovation/7.png'),
       resolveAssetPath('/src/assets/projects/Global Technology Innovation/8.png'),
+    ],
+    'Icon-IQ': [
+      resolveAssetPath('/src/assets/projects/Icon-IQ/1.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/2.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/3.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/4.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/5.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/6.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/7.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/8.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/9.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/10.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/11.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/12.png'),
+      resolveAssetPath('/src/assets/projects/Icon-IQ/13.png'),
+    ],
+    'Comovorun': [
+      resolveAssetPath('/src/assets/projects/Comovorun/1.png'),
+      resolveAssetPath('/src/assets/projects/Comovorun/2.png'),
+      resolveAssetPath('/src/assets/projects/Comovorun/3.png'),
+      resolveAssetPath('/src/assets/projects/Comovorun/4.png'),
+      resolveAssetPath('/src/assets/projects/Comovorun/5.png'),
+      resolveAssetPath('/src/assets/projects/Comovorun/6.png'),
+      resolveAssetPath('/src/assets/projects/Comovorun/7.png'),
+      resolveAssetPath('/src/assets/projects/Comovorun/8.png'),
+    ],
+    'Strada': [
+      resolveAssetPath('/src/assets/projects/Strada/1.png'),
+      resolveAssetPath('/src/assets/projects/Strada/2.png'),
+      resolveAssetPath('/src/assets/projects/Strada/3.png'),
+      resolveAssetPath('/src/assets/projects/Strada/4.png'),
+      resolveAssetPath('/src/assets/projects/Strada/5.png'),
+      resolveAssetPath('/src/assets/projects/Strada/6.png'),
+      resolveAssetPath('/src/assets/projects/Strada/7.png'),
+      resolveAssetPath('/src/assets/projects/Strada/8.png'),
+      resolveAssetPath('/src/assets/projects/Strada/9.png'),
     ]
   };
 

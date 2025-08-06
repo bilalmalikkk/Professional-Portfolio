@@ -185,6 +185,69 @@ export const projects: Project[] = [
     client: "Vision Direct Ltd.",
     duration: "8 months",
     githubUrl: "https://github.com/bilal/visiondirect"
+  },
+  {
+    id: "iconiq",
+    name: "Icon-IQ",
+    title: "Icon IQ",
+    description: "An intelligent icon design and management platform that provides AI-powered icon creation, customization, and brand consistency tools for designers and businesses.",
+    category: ["Design", "AI", "Branding"],
+    techStack: ["React", "TypeScript", "TensorFlow", "Canvas API"],
+    color: "bg-emerald-500",
+    borderColor: "border-emerald-500",
+    images: {
+      desktop: "/src/assets/projects/Icon-IQ/Icon-IQ.png",
+      mobile: "/src/assets/projects/Icon-IQ/Icon-IQ.png",
+      alt: "Icon IQ - AI-Powered Icon Design Platform"
+    },
+    featured: true,
+    year: 2024,
+    client: "Icon IQ Studios",
+    duration: "5 months",
+    liveUrl: "https://iconiq.design",
+    githubUrl: "https://github.com/bilal/iconiq"
+  },
+  {
+    id: "comovorun",
+    name: "Comovorun",
+    title: "Comovorun",
+    description: "A comprehensive running and fitness tracking platform that combines social features with advanced analytics to help runners achieve their goals and connect with the community.",
+    category: ["Fitness", "Social", "Analytics"],
+    techStack: ["React Native", "Node.js", "MongoDB", "GPS Tracking"],
+    color: "bg-red-500",
+    borderColor: "border-red-500",
+    images: {
+      desktop: "/src/assets/projects/Comovorun/Comovorun-Web.png",
+      mobile: "/src/assets/projects/Comovorun/Comovorun-Web.png",
+      alt: "Comovorun - Social Running Platform"
+    },
+    featured: true,
+    year: 2024,
+    client: "Comovorun Inc.",
+    duration: "6 months",
+    liveUrl: "https://comovorun.app",
+    githubUrl: "https://github.com/bilal/comovorun"
+  },
+  {
+    id: "strada",
+    name: "Strada",
+    title: "Strada",
+    description: "A modern road trip planning and navigation platform that helps travelers discover scenic routes, plan stops, and share their adventures with the community.",
+    category: ["Travel", "Navigation", "Social"],
+    techStack: ["Vue.js", "Python", "PostgreSQL", "Map APIs"],
+    color: "bg-amber-500",
+    borderColor: "border-amber-500",
+    images: {
+      desktop: "/src/assets/projects/Strada/Strada-Web.png",
+      mobile: "/src/assets/projects/Strada/Strada-Web.png",
+      alt: "Strada - Road Trip Planning Platform"
+    },
+    featured: true,
+    year: 2024,
+    client: "Strada Travel",
+    duration: "4 months",
+    liveUrl: "https://strada.travel",
+    githubUrl: "https://github.com/bilal/strada"
   }
 ];
 
@@ -336,6 +399,57 @@ export const caseStudies: CaseStudy[] = [
       "Healthcare provider dashboard"
     ],
     results: "The platform achieved 92% diagnostic accuracy, served 10,000+ patients, and reduced appointment scheduling time by 60%. Healthcare providers reported 40% improvement in patient outcomes."
+  },
+  {
+    id: "iconiq",
+    challenge: "Icon IQ Studios needed to create an intelligent platform that could automate icon design while maintaining brand consistency and quality. The main challenges included developing accurate AI for design generation, ensuring brand compliance, and creating an intuitive interface for both designers and non-designers.",
+    aim: "To develop an AI-powered icon design platform that provides intelligent icon creation, customization tools, and brand consistency features while maintaining professional design standards and user-friendly experience.",
+    solution: "Built a React-based platform with TypeScript for type safety, integrated TensorFlow for AI-powered icon generation, and implemented Canvas API for real-time design manipulation and customization.",
+    development: "The development process began with extensive research into design AI and user experience patterns. We built the frontend using React with TypeScript for better code quality, implemented TensorFlow for AI icon generation models, and used Canvas API for real-time design manipulation. The platform was designed with responsive design principles and accessibility in mind.",
+    technologies: ["React", "TypeScript", "TensorFlow", "Canvas API", "AI/ML", "Design APIs"],
+    features: [
+      "AI-powered icon generation",
+      "Real-time customization tools",
+      "Brand consistency checking",
+      "Design templates library",
+      "Export in multiple formats",
+      "Collaboration features"
+    ],
+    results: "The platform generated over 50,000 custom icons, reduced design time by 70%, and achieved 95% brand consistency across all generated assets. User satisfaction increased by 85%."
+  },
+  {
+    id: "comovorun",
+    challenge: "Comovorun Inc. needed to create a comprehensive fitness platform that could combine social features with advanced tracking capabilities. The main challenges included developing accurate GPS tracking, creating engaging social features, and ensuring data privacy while maintaining community engagement.",
+    aim: "To develop a social running platform that combines advanced fitness tracking with community features, helping runners achieve their goals while connecting with like-minded individuals.",
+    solution: "Built a React Native-based mobile application with Node.js backend, integrated GPS tracking for accurate route mapping, and implemented social features for community engagement and motivation.",
+    development: "The development process involved extensive user research with runners and fitness enthusiasts. We built the mobile app using React Native for cross-platform compatibility, implemented Node.js backend with MongoDB for flexible data modeling, and integrated GPS tracking APIs for accurate route mapping. Social features were built using real-time communication protocols.",
+    technologies: ["React Native", "Node.js", "MongoDB", "GPS Tracking", "Social APIs", "Real-time Communication"],
+    features: [
+      "GPS route tracking",
+      "Social challenges and groups",
+      "Advanced analytics dashboard",
+      "Real-time leaderboards",
+      "Achievement system",
+      "Community forums"
+    ],
+    results: "The platform tracked over 1M+ running sessions, facilitated 50,000+ social connections, and helped users achieve 200% more fitness goals compared to traditional tracking apps."
+  },
+  {
+    id: "strada",
+    challenge: "Strada Travel needed to create a modern road trip planning platform that could help travelers discover scenic routes and plan memorable journeys. The main challenges included integrating multiple map APIs, creating an intuitive planning interface, and building a community for sharing travel experiences.",
+    aim: "To develop a comprehensive road trip planning platform that helps travelers discover scenic routes, plan stops efficiently, and share their adventures with the community.",
+    solution: "Built a Vue.js-based platform with Python backend, integrated multiple map APIs for comprehensive route planning, and implemented social features for sharing travel experiences and recommendations.",
+    development: "The development process began with extensive research into travel planning workflows and user needs. We built the frontend using Vue.js for reactive user interfaces, implemented Python backend with PostgreSQL for robust data management, and integrated multiple map APIs for comprehensive route planning. Social features were built to encourage community engagement.",
+    technologies: ["Vue.js", "Python", "PostgreSQL", "Map APIs", "Social Features", "Real-time Updates"],
+    features: [
+      "Scenic route discovery",
+      "Interactive trip planning",
+      "Community recommendations",
+      "Real-time weather integration",
+      "Photo sharing and stories",
+      "Trip analytics and insights"
+    ],
+    results: "The platform helped plan over 100,000 road trips, facilitated 25,000+ community recommendations, and increased user engagement by 300% through social features and community interaction."
   }
 ];
 

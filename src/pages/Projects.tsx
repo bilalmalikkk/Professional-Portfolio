@@ -170,7 +170,11 @@ const Projects = () => {
                     <div className="relative">
                       {/* Desktop Mockup */}
                       <div className="relative mb-4">
-                        <div className="w-64 sm:w-80 md:w-86 h-32 sm:h-40 md:h-46 bg-gray-800 rounded-lg shadow-2xl border-2 sm:border-4 border-gray-700 overflow-hidden">
+                        <div className={`bg-gray-800 rounded-lg shadow-2xl border-2 sm:border-4 border-gray-700 overflow-hidden ${
+                          ['Icon-IQ', 'Comovorun', 'Strada'].includes(project.name)
+                            ? 'w-72 sm:w-80 md:w-96 h-48 sm:h-56 md:h-64' // Reduced width for new projects
+                            : 'w-64 sm:w-80 md:w-86 h-32 sm:h-40 md:h-46' // Original size for existing projects
+                        }`}>
                           <img 
                             src={getProjectImages(project.name).desktop} 
                             alt={getProjectImages(project.name).alt}
@@ -179,16 +183,18 @@ const Projects = () => {
                         </div>
                       </div>
                       
-                      {/* Mobile Mockup */}
-                      <div className="absolute -bottom-2 sm:-bottom-4 -right-2 sm:-right-4">
-                        <div className="w-24 sm:w-32 md:w-40 h-36 sm:h-48 md:h-64 bg-gray-800 rounded-xl sm:rounded-2xl shadow-2xl border-2 sm:border-4 border-gray-700 overflow-hidden">
-                          <img 
-                            src={getProjectImages(project.name).mobile} 
-                            alt={getProjectImages(project.name).alt}
-                            className="w-full h-full object-contain bg-gray-900"
-                          />
+                      {/* Mobile Mockup - Only show for existing projects, not for new ones */}
+                      {!['Icon-IQ', 'Comovorun', 'Strada'].includes(project.name) && (
+                        <div className="absolute -bottom-2 sm:-bottom-4 -right-2 sm:-right-4">
+                          <div className="w-24 sm:w-32 md:w-40 h-36 sm:h-48 md:h-64 bg-gray-800 rounded-xl sm:rounded-2xl shadow-2xl border-2 sm:border-4 border-gray-700 overflow-hidden">
+                            <img 
+                              src={getProjectImages(project.name).mobile} 
+                              alt={getProjectImages(project.name).alt}
+                              className="w-full h-full object-contain bg-gray-900"
+                            />
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>

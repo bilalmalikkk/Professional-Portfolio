@@ -19,8 +19,10 @@ const Projects = () => {
     setSelectedProject(null);
   };
 
-  // Show only the first 9 projects
-  const displayProjects = projects.slice(0, 9);
+  // Show only the first 8 projects plus Strada as the 9th featured project
+  const firstEightProjects = projects.slice(0, 8);
+  const stradaProject = projects.find(project => project.name === "Strada");
+  const displayProjects = stradaProject ? [...firstEightProjects, stradaProject] : firstEightProjects;
 
   return (
     <section id="projects" className="py-20 px-6">
