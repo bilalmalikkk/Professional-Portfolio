@@ -5,8 +5,79 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, Mail, Phone, MapPin, Clock, MessageSquare, Send, Mail as MailIcon, Phone as PhoneIcon, MapPin as MapPinIcon, Clock as ClockIcon } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import { useState, useEffect } from "react";
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '@/config/emailjs';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    projectType: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+  }, []);
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const templateParams = {
+        name: `${formData.firstName} ${formData.lastName}`,
+        message: `
+Contact Form Submission:
+
+Name: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Project Type: ${formData.projectType}
+Message: ${formData.message}
+
+Please contact: ${formData.email}
+        `.trim(),
+        time: new Date().toLocaleString(),
+        subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`
+      };
+
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      console.log('Email sent successfully:', result);
+      setSubmitStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        projectType: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const contactInfo = [
     {
       icon: <MailIcon className="w-5 h-5" />,
@@ -108,30 +179,39 @@ const Contact = () => {
                 <div className="bg-card border border-border rounded-2xl p-8 h-[730px] flex flex-col">
                   <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
                   
-                  <form className="space-y-6 flex-1 flex flex-col">
+                  <form className="space-y-6 flex-1 flex flex-col" onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-white font-medium mb-2 text-sm">First Name</label>
+                        <label className="block text-white font-medium mb-2 text-sm">First Name <span className="text-orange-500">*</span></label>
                         <Input 
                           placeholder="John"
+                          value={formData.firstName}
+                          onChange={(e) => handleInputChange('firstName', e.target.value)}
                           className="bg-background border-border text-white placeholder:text-gray-400"
+                          required
                         />
                       </div>
                       <div>
-                        <label className="block text-white font-medium mb-2 text-sm">Last Name</label>
+                        <label className="block text-white font-medium mb-2 text-sm">Last Name <span className="text-orange-500">*</span></label>
                         <Input 
                           placeholder="Doe"
+                          value={formData.lastName}
+                          onChange={(e) => handleInputChange('lastName', e.target.value)}
                           className="bg-background border-border text-white placeholder:text-gray-400"
+                          required
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label className="block text-white font-medium mb-2 text-sm">Email</label>
+                      <label className="block text-white font-medium mb-2 text-sm">Email <span className="text-orange-500">*</span></label>
                       <Input 
                         type="email"
                         placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
                         className="bg-background border-border text-white placeholder:text-gray-400"
+                        required
                       />
                     </div>
                     
@@ -140,13 +220,20 @@ const Contact = () => {
                       <Input 
                         type="tel"
                         placeholder="+1 (555) 123-4567"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange('phone', e.target.value)}
                         className="bg-background border-border text-white placeholder:text-gray-400"
                       />
                     </div>
                     
                     <div>
-                      <label className="block text-white font-medium mb-2 text-sm">Project Type</label>
-                      <select className="w-full bg-background border border-border rounded-md px-3 py-2 text-white text-sm">
+                      <label className="block text-white font-medium mb-2 text-sm">Project Type <span className="text-orange-500">*</span></label>
+                      <select 
+                        className="w-full bg-background border border-border rounded-md px-3 py-2 text-white text-sm"
+                        value={formData.projectType}
+                        onChange={(e) => handleInputChange('projectType', e.target.value)}
+                        required
+                      >
                         <option value="">Select a project type</option>
                         <option value="web">Web Development</option>
                         <option value="mobile">Mobile App</option>
@@ -157,22 +244,38 @@ const Contact = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-white font-medium mb-2 text-sm">Message</label>
+                      <label className="block text-white font-medium mb-2 text-sm">Message <span className="text-orange-500">*</span></label>
                       <Textarea 
                         placeholder="Tell us about your project..."
                         rows={6}
+                        value={formData.message}
+                        onChange={(e) => handleInputChange('message', e.target.value)}
                         className="bg-background border-border text-white placeholder:text-gray-400"
+                        required
                       />
                     </div>
                     
-                                         <Button 
-                       type="submit"
-                       size="lg"
-                       className="bg-white text-black hover:bg-white/90 w-full h-12 mt-6"
-                     >
-                       <Send className="w-4 h-4 mr-2" />
-                       Send Message
-                     </Button>
+                    <Button 
+                      type="submit"
+                      size="lg"
+                      disabled={isSubmitting}
+                      className="bg-white text-black hover:bg-white/90 w-full h-12 mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <Send className="w-4 h-4 mr-2" />
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </Button>
+
+                    {/* Status Messages */}
+                    {submitStatus === 'success' && (
+                      <div className="mt-4 p-3 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-sm">
+                        ✓ Message sent successfully! We'll get back to you soon.
+                      </div>
+                    )}
+                    {submitStatus === 'error' && (
+                      <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
+                        ✗ There was an error sending your message. Please try again or contact us directly at bilalmalik746429@gmail.com
+                      </div>
+                    )}
                   </form>
                 </div>
               </div>

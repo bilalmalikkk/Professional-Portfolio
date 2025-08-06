@@ -27,9 +27,9 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-7xl max-h-[90vh] overflow-y-auto bg-background border-white/20 backdrop-blur-sm scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-full">
+      <DialogContent className="w-[95vw] max-w-7xl max-h-[95vh] md:max-h-[90vh] overflow-y-auto bg-background border-white/20 backdrop-blur-sm scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-full p-4 md:p-6">
         <DialogHeader className="relative">
-          <DialogTitle className="text-3xl md:text-4xl font-bold text-white text-center">
+          <DialogTitle className="text-2xl md:text-3xl lg:text-4xl font-bold text-white text-center">
             {project.title}
           </DialogTitle>
         </DialogHeader>
@@ -85,7 +85,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
             <div className="space-y-8">
               {/* Key Features */}
               <div className="space-y-4 p-6 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-2xl border border-teal-500/20">
-                <h3 className="text-2xl font-bold text-white text-center">Key Features</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-white text-center">Key Features</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {caseStudy.features.map((feature, index) => (
                     <div key={index} className="flex items-start gap-3">
@@ -98,7 +98,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
 
               {/* Project Gallery */}
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-white text-center">Project Gallery</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-white text-center">Project Gallery</h3>
                 
                 <div className="relative">
                   <Carousel
@@ -110,9 +110,9 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
                   >
                     <CarouselContent>
                       {/* Desktop Screenshot */}
-                      <CarouselItem className="md:basis-1/2 lg:basis-1/2">
+                      <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/2">
                         <div className="p-1">
-                          <div className="w-full h-80 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-lg border border-white/10 overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                          <div className="w-full h-60 md:h-80 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-lg border border-white/10 overflow-hidden transform hover:scale-105 transition-transform duration-300">
                             <img 
                               src={projectImages.desktop} 
                               alt={`${project.name} desktop view`}
@@ -124,9 +124,9 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
                       
                       {/* Sequence Images */}
                       {sequenceImages.map((image, index) => (
-                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
+                        <CarouselItem key={index} className="basis-full md:basis-1/2 lg:basis-1/2">
                           <div className="p-1">
-                            <div className="w-full h-80 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-lg border border-white/10 overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                            <div className="w-full h-60 md:h-80 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-lg border border-white/10 overflow-hidden transform hover:scale-105 transition-transform duration-300">
                               <img 
                                 src={image} 
                                 alt={`${project.name} screenshot ${index + 1}`}
@@ -137,15 +137,15 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious className="bg-white/20 border-white/30 text-white hover:bg-white/30 hover:border-white/50 w-12 h-12 -left-6" />
-                    <CarouselNext className="bg-white/20 border-white/30 text-white hover:bg-white/30 hover:border-white/50 w-12 h-12 -right-6" />
+                    <CarouselPrevious className="bg-white/20 border-white/30 text-white hover:bg-white/30 hover:border-white/50 w-10 h-10 md:w-12 md:h-12 -left-2 md:-left-6" />
+                    <CarouselNext className="bg-white/20 border-white/30 text-white hover:bg-white/30 hover:border-white/50 w-10 h-10 md:w-12 md:h-12 -right-2 md:-right-6" />
                   </Carousel>
                 </div>
               </div>
 
               {/* Aim Section */}
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-white text-center">Project Aim</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-white text-center">Project Aim</h3>
                 <p className="text-white/80 leading-relaxed text-lg text-center max-w-4xl mx-auto">
                   {caseStudy.aim}
                 </p>
@@ -153,7 +153,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
 
               {/* Development Process */}
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-white text-center">Development Process</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-white text-center">Development Process</h3>
                 <p className="text-white/80 leading-relaxed text-lg text-center max-w-4xl mx-auto">
                   {caseStudy.development}
                 </p>
@@ -161,7 +161,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
 
               {/* Results */}
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-white text-center">Results & Impact</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-white text-center">Results & Impact</h3>
                 <p className="text-white/80 leading-relaxed text-lg text-center max-w-4xl mx-auto">
                   {caseStudy.results}
                 </p>
@@ -171,7 +171,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
 
           {/* Tech Stack */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white text-center">Technology Stack</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-white text-center">Technology Stack</h3>
             <div className="flex flex-wrap gap-3 justify-center">
               {project.techStack.map((tech) => (
                 <Badge
