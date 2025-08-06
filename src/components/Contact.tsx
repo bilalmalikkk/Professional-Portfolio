@@ -4,8 +4,61 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import HandshakeAnimation from "./HandshakeAnimation";
+import { useState } from "react";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    service: '',
+    budget: '',
+    description: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Create email body
+      const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company}
+Service: ${formData.service}
+Budget: ${formData.budget}
+Description: ${formData.description}
+      `.trim();
+
+      // Create mailto link
+      const mailtoLink = `mailto:bilalmalik746429@gmail.com?subject=New Project Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(emailBody)}`;
+
+      // Open default email client
+      window.location.href = mailtoLink;
+
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        service: '',
+        budget: '',
+        description: ''
+      });
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section className="py-20 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
@@ -31,7 +84,7 @@ const Contact = () => {
           
           {/* Right Section - Contact Form */}
           <div className="bg-card border border-border rounded-lg p-8 shadow-sm">
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Name and Email Row */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -41,6 +94,8 @@ const Contact = () => {
                   <Input 
                     id="name"
                     placeholder="Your name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
                     className="border-border bg-background text-foreground focus:border-orange-500 focus:ring-orange-500"
                     required
                   />
@@ -53,6 +108,8 @@ const Contact = () => {
                     id="email"
                     type="email"
                     placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
                     className="border-border bg-background text-foreground focus:border-orange-500 focus:ring-orange-500"
                     required
                   />
@@ -67,6 +124,8 @@ const Contact = () => {
                 <Input 
                   id="company"
                   placeholder="Your company"
+                  value={formData.company}
+                  onChange={(e) => handleInputChange('company', e.target.value)}
                   className="border-border bg-background text-foreground focus:border-orange-500 focus:ring-orange-500"
                   required
                 />
@@ -78,7 +137,7 @@ const Contact = () => {
                   <Label htmlFor="service" className="text-sm font-medium text-foreground">
                     How can we help you? <span className="text-orange-500">*</span>
                   </Label>
-                  <Select>
+                  <Select onValueChange={(value) => handleInputChange('service', value)} value={formData.service}>
                     <SelectTrigger className="border-border bg-background text-foreground focus:border-orange-500 focus:ring-orange-500">
                       <SelectValue placeholder="Select Service" />
                     </SelectTrigger>
@@ -96,7 +155,7 @@ const Contact = () => {
                   <Label htmlFor="budget" className="text-sm font-medium text-foreground">
                     Budget Range <span className="text-orange-500">*</span>
                   </Label>
-                  <Select>
+                  <Select onValueChange={(value) => handleInputChange('budget', value)} value={formData.budget}>
                     <SelectTrigger className="border-border bg-background text-foreground focus:border-orange-500 focus:ring-orange-500">
                       <SelectValue placeholder="Select Budget Range" />
                     </SelectTrigger>
@@ -119,6 +178,8 @@ const Contact = () => {
                 <Textarea 
                   id="description"
                   placeholder="Describe your project requirements, goals, and any specific details..."
+                  value={formData.description}
+                  onChange={(e) => handleInputChange('description', e.target.value)}
                   rows={4}
                   className="border-border bg-background text-foreground focus:border-orange-500 focus:ring-orange-500 resize-none"
                 />
@@ -128,18 +189,42 @@ const Contact = () => {
               <div className="flex gap-4 pt-4">
                 <Button 
                   type="submit"
-                  className="px-8 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-orange-600 hover:to-yellow-600 rounded-full text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  disabled={isSubmitting}
+                  className="px-8 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-orange-600 hover:to-yellow-600 rounded-full text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
                 <Button 
                   type="button"
                   variant="outline"
+                  onClick={() => {
+                    setFormData({
+                      name: '',
+                      email: '',
+                      company: '',
+                      service: '',
+                      budget: '',
+                      description: ''
+                    });
+                    setSubmitStatus('idle');
+                  }}
                   className="px-8 py-3 border-white/30 text-white hover:bg-white/10 rounded-full text-sm font-medium"
                 >
                   Cancel
                 </Button>
               </div>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="mt-4 p-3 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-sm">
+                  ✓ Message sent successfully! Your email client should open with the message ready to send.
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
+                  ✗ There was an error sending your message. Please try again.
+                </div>
+              )}
             </form>
           </div>
         </div>
