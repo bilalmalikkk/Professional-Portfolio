@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { getProjectImages } from "@/utils/imageUtils";
 import CaseStudyModal from "@/components/CaseStudyModal";
 import { useState } from "react";
@@ -40,9 +40,14 @@ const Projects = () => {
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="mb-8 sm:mb-12">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8">
-                Our Work
-              </h1>
+              <div className="text-center mb-8">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                  Our Work
+                </h1>
+                <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
+                  Explore our portfolio of innovative projects and creative solutions
+                </p>
+              </div>
               
               {/* Filter Buttons */}
               <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -156,17 +161,7 @@ const Projects = () => {
                         </Button>
                       )}
                       
-                      {project.githubUrl && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-xs sm:text-sm"
-                          onClick={() => window.open(project.githubUrl, '_blank')}
-                        >
-                          GitHub
-                          <Github className="w-3 h-3 sm:w-4 sm:h-4 ml-2" />
-                        </Button>
-                      )}
+
                     </div>
                   </div>
 

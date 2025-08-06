@@ -71,10 +71,10 @@ const Contact = () => {
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
                 Get In Touch
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
                 Ready to start your next project? Let's discuss how we can help bring your ideas to life.
               </p>
             </div>
@@ -100,7 +100,7 @@ const Contact = () => {
 
                 {/* Social Links */}
                 <div className="bg-card border border-border rounded-2xl p-8">
-                  <h3 className="text-xl font-bold text-white mb-6">Follow Us</h3>
+                  <h3 className="text-2xl font-bold text-white mb-6">Follow Us</h3>
                   <div className="flex gap-4">
                     {socialLinks.map((social, index) => (
                       <Button
@@ -118,7 +118,7 @@ const Contact = () => {
 
                 {/* Map Section */}
                 <div className="bg-card border border-border rounded-2xl p-8">
-                  <h3 className="text-xl font-bold text-white mb-6">Our Location</h3>
+                  <h3 className="text-2xl font-bold text-white mb-6">Our Location</h3>
                   <div className="bg-gray-800 rounded-xl h-48 flex items-center justify-center">
                     <div className="text-center text-gray-400">
                       <MapPin className="w-12 h-12 mx-auto mb-3" />
@@ -203,7 +203,7 @@ const Contact = () => {
 
                 {/* FAQ Section */}
                 <div className="bg-card border border-border rounded-2xl p-8">
-                  <h3 className="text-xl font-bold text-white mb-6">Frequently Asked Questions</h3>
+                  <h3 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h3>
                   <div className="space-y-4">
                     {faqs.map((faq, index) => (
                       <div key={index} className="border-b border-border pb-4 last:border-b-0">

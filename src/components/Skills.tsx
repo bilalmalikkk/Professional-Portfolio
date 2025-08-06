@@ -30,7 +30,7 @@ const Skills = () => {
     return () => observer.disconnect();
   }, []);
 
-  const skillCategories = [
+    const skillCategories = [
     {
       title: "Frontend Development",
       subtitle: "Modern UI/UX Technologies",

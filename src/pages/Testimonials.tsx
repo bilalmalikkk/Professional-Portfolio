@@ -85,10 +85,10 @@ const Testimonials = () => {
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
                 What Our Clients Say
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
                 Don't just take our word for it. Here's what our clients have to say about working with us.
               </p>
             </div>
@@ -139,7 +139,7 @@ const Testimonials = () => {
 
             {/* Stats Section */}
             <div className="bg-card border border-border rounded-2xl p-8">
-              <h2 className="text-2xl font-bold text-white text-center mb-8">
+              <h2 className="text-3xl font-bold text-white text-center mb-8">
                 Our Impact in Numbers
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">

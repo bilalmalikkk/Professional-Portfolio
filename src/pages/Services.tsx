@@ -109,12 +109,12 @@ const Services = () => {
                 <span className="text-yellow-400 text-sm font-medium">Our Services</span>
                 <Star className="w-6 h-6 text-yellow-400" />
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
                 Comprehensive
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500"> Development</span>
                 <br />Solutions
               </h1>
-              <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
                 We offer end-to-end development services that transform your ideas into powerful, scalable applications. 
                 From concept to deployment, we're with you every step of the way.
               </p>
