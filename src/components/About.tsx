@@ -74,13 +74,41 @@ const About = () => {
 
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
            {/* Content */}
-           <div className={`space-y-6 transform transition-all duration-1000 delay-200 ${
-             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-           }`}>
-                           <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  Who I Am
-                </h3>
+                       <div className={`space-y-6 transform transition-all duration-1000 delay-200 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}>
+                            <div>
+                 <div className="flex items-center gap-4 mb-4">
+                   <div className="relative group">
+                     {/* Modern gradient background with animation */}
+                     <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-yellow-500 to-orange-600 rounded-full transform rotate-3 scale-110 opacity-30 group-hover:scale-125 group-hover:rotate-6 transition-all duration-500"></div>
+                     
+                                           {/* Glowing ring effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                     
+                     {/* Main avatar container */}
+                     <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl group-hover:shadow-orange-500/25 transition-all duration-300">
+                       <img 
+                         src="/src/assets/profile-photo.jpg" 
+                         alt="Bilal Malik"
+                         className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                       />
+                       
+                       {/* Modern overlay with status indicator */}
+                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                       
+                       {/* Online status indicator */}
+                       <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-400 border-2 border-white rounded-full shadow-lg"></div>
+                     </div>
+                     
+                     {/* Floating accent elements */}
+                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                     <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-yellow-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                   </div>
+                   <h3 className="text-2xl md:text-3xl font-bold text-white">
+                     Who I Am
+                   </h3>
+                 </div>
                 <p className="text-gray-300 leading-relaxed mb-4">
                   I'm Bilal Malik, a seasoned full-stack developer with over 5 years of experience in creating 
                   innovative web applications and digital solutions. My passion lies in building 
@@ -103,9 +131,7 @@ const About = () => {
                 <p className="text-gray-300 leading-relaxed mb-4">
                   I believe in the power of continuous learning and innovation. Every project I undertake 
                   is an opportunity to push boundaries, explore new methodologies, and deliver solutions 
-                  that not only meet current needs but are also future-proof. My approach combines 
-                  technical excellence with strategic thinking, ensuring that every line of code 
-                  contributes to the broader business goals.
+                  that not only meet current needs but are also future-proof.
                 </p>
                 
               </div>

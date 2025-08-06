@@ -2,8 +2,11 @@ import Navigation from "@/components/Navigation";
 import { Badge } from "@/components/ui/badge";
 import { Quote, Star, ArrowUpRight } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import { useNavigate } from "react-router-dom";
 
 const Testimonials = () => {
+  const navigate = useNavigate();
+  
   const testimonials = [
     {
       id: 1,
@@ -156,19 +159,26 @@ const Testimonials = () => {
               </div>
             </div>
 
-            {/* Call to Action */}
+            {/* Enhanced Call to Action */}
             <div className="text-center mt-16">
-              <div className="bg-gradient-to-r from-primary to-purple-500 rounded-2xl p-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Ready to Join Our Success Stories?
-                </h2>
-                <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                  Let's work together to create something amazing. Your success story could be next.
-                </p>
-                <button className="bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-white/90 transition-all duration-200 flex items-center gap-2 mx-auto">
-                  Start Your Project
-                  <ArrowUpRight className="w-5 h-5" />
-                </button>
+              <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl p-12 relative overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="relative z-10">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                    Ready to Join Our Success Stories?
+                  </h2>
+                  <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+                    Let's work together to create something amazing. Your success story could be next.
+                  </p>
+                                     <div className="text-center">
+                     <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-8 py-4">
+                       <Quote className="w-5 h-5 text-white" />
+                       <span className="text-white font-medium">Ready to be our next success story? Let's talk!</span>
+                       <ArrowUpRight className="w-4 h-4 text-white" />
+                     </div>
+                   </div>
+                </div>
               </div>
             </div>
           </div>
