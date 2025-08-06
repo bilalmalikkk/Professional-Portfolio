@@ -149,7 +149,7 @@ const Projects = () => {
                         <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2" />
                       </Button>
                       
-                      {project.liveUrl && (
+                      {project.liveUrl && !['Strada', 'Comovorun', 'Icon-IQ'].includes(project.name) && (
                         <Button
                           variant="outline"
                           size="sm"
