@@ -72,7 +72,7 @@ const Projects = () => {
               {filteredProjects.map((project) => (
                 <div
                   key={project.id}
-                  className={`${project.color} rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 min-h-[500px] sm:min-h-[600px] flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12`}
+                  className={`${project.color} rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 min-h-[400px] sm:min-h-[450px] flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12`}
                 >
                   {/* Content */}
                   <div className="flex-1 space-y-4 sm:space-y-6">
