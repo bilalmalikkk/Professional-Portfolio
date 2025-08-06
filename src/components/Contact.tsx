@@ -4,7 +4,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import HandshakeAnimation from "./HandshakeAnimation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '@/config/emailjs';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +20,11 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+  }, []);
+
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
@@ -28,21 +35,55 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
-      // Create email body
-      const emailBody = `
+      // EmailJS configuration for direct email sending
+      const templateParams = {
+        name: formData.name,
+        message: `
+Project Inquiry Details:
+
 Name: ${formData.name}
 Email: ${formData.email}
 Company: ${formData.company}
 Service: ${formData.service}
 Budget: ${formData.budget}
 Description: ${formData.description}
-      `.trim();
 
-      // Create mailto link
-      const mailtoLink = `mailto:bilalmalik746429@gmail.com?subject=New Project Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(emailBody)}`;
+Please contact: ${formData.email}
+        `.trim(),
+        time: new Date().toLocaleString(),
+        subject: `New Project Inquiry from ${formData.name}`
+      };
 
-      // Open default email client
-      window.location.href = mailtoLink;
+      console.log('Sending email with params:', {
+        serviceId: EMAILJS_CONFIG.SERVICE_ID,
+        templateId: EMAILJS_CONFIG.TEMPLATE_ID,
+        publicKey: EMAILJS_CONFIG.PUBLIC_KEY,
+        templateParams
+      });
+
+      // Try different EmailJS methods
+      let result;
+      try {
+        // Method 1: Standard send
+        result = await emailjs.send(
+          EMAILJS_CONFIG.SERVICE_ID,
+          EMAILJS_CONFIG.TEMPLATE_ID,
+          templateParams,
+          EMAILJS_CONFIG.PUBLIC_KEY
+        );
+        console.log('Email sent successfully with send method:', result);
+      } catch (sendError) {
+        console.log('Send method failed, trying sendForm:', sendError);
+        
+        // Method 2: SendForm (alternative)
+        result = await emailjs.sendForm(
+          EMAILJS_CONFIG.SERVICE_ID,
+          EMAILJS_CONFIG.TEMPLATE_ID,
+          document.querySelector('form') as HTMLFormElement,
+          EMAILJS_CONFIG.PUBLIC_KEY
+        );
+        console.log('Email sent successfully with sendForm method:', result);
+      }
 
       setSubmitStatus('success');
       setFormData({
@@ -54,6 +95,12 @@ Description: ${formData.description}
         description: ''
       });
     } catch (error) {
+      console.error('Email sending failed:', error);
+      console.error('Error details:', {
+        message: error.message,
+        code: error.code,
+        stack: error.stack
+      });
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -217,12 +264,12 @@ Description: ${formData.description}
               {/* Status Messages */}
               {submitStatus === 'success' && (
                 <div className="mt-4 p-3 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-sm">
-                  ✓ Message sent successfully! Your email client should open with the message ready to send.
+                  ✓ Message sent successfully! We'll get back to you soon.
                 </div>
               )}
               {submitStatus === 'error' && (
                 <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
-                  ✗ There was an error sending your message. Please try again.
+                  ✗ There was an error sending your message. Please try again or contact us directly at bilalmalik746429@gmail.com
                 </div>
               )}
             </form>
