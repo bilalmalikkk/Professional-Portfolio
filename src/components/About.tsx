@@ -88,11 +88,11 @@ const About = () => {
                      
                      {/* Main avatar container */}
                      <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl group-hover:shadow-orange-500/25 transition-all duration-300">
-                       <img 
-                         src="/src/assets/profile-photo.jpg" 
-                         alt="Bilal Malik"
-                         className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                       />
+                                               <img 
+                          src="/profile-photo.jpg" 
+                          alt="Bilal Malik"
+                          className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                        />
                        
                        {/* Modern overlay with status indicator */}
                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
