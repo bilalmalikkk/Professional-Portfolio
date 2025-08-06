@@ -140,44 +140,44 @@ Please contact: ${formData.email}
         
         <div className="pt-20 px-6">
           <div className="max-w-7xl mx-auto">
-            {/* Header Section */}
-            <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                Get In Touch
-              </h1>
-              <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
-                Ready to start your next project? Let's discuss how we can help bring your ideas to life.
-              </p>
-            </div>
+                         {/* Header Section */}
+             <div className="text-center mb-8 md:mb-16">
+               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4">
+                 Get In Touch
+               </h1>
+               <p className="text-base md:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto px-4">
+                 Ready to start your next project? Let's discuss how we can help bring your ideas to life.
+               </p>
+             </div>
 
-            {/* Main Content Grid - Two Columns */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-              
-              {/* Contact Information - Left Column */}
-              <div className="lg:col-span-1">
-                <div className="bg-card border border-border rounded-2xl p-8 h-[730px] flex flex-col">
-                  <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
-                  <div className="space-y-4 flex-1">
-                    {contactInfo.map((info, index) => (
-                      <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-background/50">
-                        <div className="text-primary mt-1">
-                          {info.icon}
-                        </div>
-                        <div>
-                          <h3 className="text-white font-semibold text-sm">{info.title}</h3>
-                          <p className="text-white text-base font-medium">{info.value}</p>
-                          <p className="text-xs text-gray-400">{info.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                         {/* Main Content Grid - Two Columns */}
+             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+               
+               {/* Contact Information - Left Column */}
+               <div className="lg:col-span-1">
+                 <div className="bg-card border border-border rounded-2xl p-6 md:p-8 h-auto lg:h-[730px] flex flex-col">
+                   <h2 className="text-xl md:text-2xl font-bold text-white mb-6">Contact Information</h2>
+                   <div className="space-y-4 flex-1">
+                     {contactInfo.map((info, index) => (
+                       <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-background/50">
+                         <div className="text-primary mt-1">
+                           {info.icon}
+                         </div>
+                         <div>
+                           <h3 className="text-white font-semibold text-sm">{info.title}</h3>
+                           <p className="text-white text-base font-medium">{info.value}</p>
+                           <p className="text-xs text-gray-400">{info.description}</p>
+                         </div>
+                       </div>
+                     ))}
+                   </div>
+                 </div>
+               </div>
 
-              {/* Contact Form - Right Column */}
-              <div className="lg:col-span-1">
-                <div className="bg-card border border-border rounded-2xl p-8 h-[730px] flex flex-col">
-                  <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
+               {/* Contact Form - Right Column */}
+               <div className="lg:col-span-1">
+                 <div className="bg-card border border-border rounded-2xl p-6 md:p-8 h-auto lg:h-[730px] flex flex-col">
+                                     <h2 className="text-xl md:text-2xl font-bold text-white mb-6">Send a Message</h2>
                   
                   <form className="space-y-6 flex-1 flex flex-col" onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -265,34 +265,43 @@ Please contact: ${formData.email}
                       {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
 
-                    {/* Status Messages */}
-                    {submitStatus === 'success' && (
-                      <div className="mt-4 p-3 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-sm">
-                        ✓ Message sent successfully! We'll get back to you soon.
-                      </div>
-                    )}
-                    {submitStatus === 'error' && (
-                      <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
-                        ✗ There was an error sending your message. Please try again or contact us directly at bilalmalik746429@gmail.com
-                      </div>
-                    )}
+                                         {/* Status Messages */}
+                     {submitStatus === 'success' && (
+                       <div className="mt-4 p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-sm text-center">
+                         <div className="flex items-center justify-center gap-2">
+                           <span className="text-green-400">✓</span>
+                           <span>Message sent successfully! We'll get back to you soon.</span>
+                         </div>
+                       </div>
+                     )}
+                     {submitStatus === 'error' && (
+                       <div className="mt-4 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm text-center">
+                         <div className="flex flex-col items-center justify-center gap-2">
+                           <div className="flex items-center gap-2">
+                             <span className="text-red-400">✗</span>
+                             <span>There was an error sending your message.</span>
+                           </div>
+                           <span className="text-xs">Please try again or contact us directly at bilalmalik746429@gmail.com</span>
+                         </div>
+                       </div>
+                     )}
                   </form>
                 </div>
               </div>
             </div>
 
-            {/* FAQ Section - Full Width Below */}
-            <div className="mb-16">
-              <h3 className="text-2xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {faqs.map((faq, index) => (
-                  <div key={index} className="p-6 rounded-lg bg-background/20">
-                    <h4 className="text-white font-semibold mb-3">{faq.question}</h4>
-                    <p className="text-gray-400 text-sm leading-relaxed">{faq.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+                         {/* FAQ Section - Full Width Below */}
+             <div className="mb-16 mt-8">
+               <h3 className="text-xl md:text-2xl font-bold text-white mb-6 md:mb-8 text-center">Frequently Asked Questions</h3>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+                 {faqs.map((faq, index) => (
+                   <div key={index} className="p-4 md:p-6 rounded-lg bg-background/20">
+                     <h4 className="text-white font-semibold mb-2 md:mb-3 text-sm md:text-base">{faq.question}</h4>
+                     <p className="text-gray-400 text-xs md:text-sm leading-relaxed">{faq.answer}</p>
+                   </div>
+                 ))}
+               </div>
+             </div>
 
             {/* Enhanced Call to Action Section */}
             <div className="text-center">
