@@ -73,7 +73,7 @@ import Kryptonomy2 from '@/assets/projects/Kryptonomy/2.png';
 import Kryptonomy3 from '@/assets/projects/Kryptonomy/3.png';
 
 import GlobalTechInnovationWeb from '@/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Web.png';
-import GlobalTechInnovationMobile from '@/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Mobile.png';
+import GlobalTechInnovationMobile from '@/assets/projects/Global Technology Innovation/Global-Technology-innovation-Mobile.png';
 import GlobalTechInnovation1 from '@/assets/projects/Global Technology Innovation/1.png';
 import GlobalTechInnovation2 from '@/assets/projects/Global Technology Innovation/2.png';
 import GlobalTechInnovation3 from '@/assets/projects/Global Technology Innovation/3.png';
@@ -170,7 +170,7 @@ const assetMap: { [key: string]: string } = {
 
   // Global Technology Innovation
   '/src/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Web.png': GlobalTechInnovationWeb,
-  '/src/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Mobile.png': GlobalTechInnovationMobile,
+  '/src/assets/projects/Global Technology Innovation/Global-Technology-innovation-Mobile.png': GlobalTechInnovationMobile,
   '/src/assets/projects/Global Technology Innovation/1.png': GlobalTechInnovation1,
   '/src/assets/projects/Global Technology Innovation/2.png': GlobalTechInnovation2,
   '/src/assets/projects/Global Technology Innovation/3.png': GlobalTechInnovation3,
@@ -236,7 +236,7 @@ export const getProjectImages = (projectName: string): { desktop: string; mobile
     },
     'Global Technology Innovation': {
       desktop: resolveAssetPath('/src/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Web.png'),
-      mobile: resolveAssetPath('/src/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Mobile.png'),
+      mobile: resolveAssetPath('/src/assets/projects/Global Technology Innovation/Global-Technology-innovation-Mobile.png'),
       alt: "Global Technology Innovation"
     }
   };
