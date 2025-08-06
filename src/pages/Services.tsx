@@ -1,10 +1,15 @@
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, Code, Palette, Smartphone, Globe, Database, Shield, Zap } from "lucide-react";
+import { ArrowUpRight, Code, Palette, Smartphone, Globe, Database, Shield, Zap, Star, TrendingUp, Award } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import ServiceModal from "@/components/ServiceModal";
+import { useState } from "react";
 
 const Services = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<any>(null);
+
   const services = [
     {
       id: 1,
@@ -74,10 +79,19 @@ const Services = () => {
     }
   ];
 
-  const filterCategories = [
-    "All", "Web Development", "Mobile", "Design", "E-commerce", 
-    "Database", "DevOps", "Security", "Cloud"
-  ];
+  const handleLearnMore = (service: any) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedService(null);
+  };
+
+  const handleGetStarted = () => {
+    window.location.href = '/contact';
+  };
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -88,23 +102,54 @@ const Services = () => {
         
         <div className="pt-20 px-6">
           <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-8">
-                Our Services
+            {/* Enhanced Header */}
+            <div className="mb-16 text-center">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Star className="w-6 h-6 text-yellow-400" />
+                <span className="text-yellow-400 text-sm font-medium">Our Services</span>
+                <Star className="w-6 h-6 text-yellow-400" />
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                Comprehensive
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500"> Development</span>
+                <br />Solutions
               </h1>
+              <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+                We offer end-to-end development services that transform your ideas into powerful, scalable applications. 
+                From concept to deployment, we're with you every step of the way.
+              </p>
+            </div>
+
+            {/* Stats Section */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <div className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl border border-blue-500/20">
+                <TrendingUp className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                <h3 className="text-3xl font-bold text-white mb-2">50+</h3>
+                <p className="text-white/70">Projects Completed</p>
+              </div>
+              <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-teal-500/10 rounded-2xl border border-green-500/20">
+                <Award className="w-12 h-12 text-green-400 mx-auto mb-4" />
+                <h3 className="text-3xl font-bold text-white mb-2">100%</h3>
+                <p className="text-white/70">Client Satisfaction</p>
+              </div>
+              <div className="text-center p-6 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-2xl border border-orange-500/20">
+                <Zap className="w-12 h-12 text-orange-400 mx-auto mb-4" />
+                <h3 className="text-3xl font-bold text-white mb-2">24/7</h3>
+                <p className="text-white/70">Support Available</p>
+              </div>
             </div>
 
             {/* Services Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className={`${service.color} rounded-3xl p-8 min-h-[400px] flex flex-col`}
+                  className={`${service.color} rounded-3xl p-8 min-h-[450px] flex flex-col group hover:scale-105 transition-all duration-300 cursor-pointer`}
+                  onClick={() => handleLearnMore(service)}
                 >
                   {/* Service Header */}
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="text-white">
+                    <div className="text-white group-hover:scale-110 transition-transform duration-300">
                       {service.icon}
                     </div>
                     <span className="text-white/80 text-sm font-medium">
@@ -137,7 +182,7 @@ const Services = () => {
 
                   {/* Features */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {service.features.map((feature) => (
+                    {service.features.slice(0, 3).map((feature) => (
                       <Badge
                         key={feature}
                         variant="secondary"
@@ -146,43 +191,75 @@ const Services = () => {
                         {feature}
                       </Badge>
                     ))}
+                    {service.features.length > 3 && (
+                      <Badge
+                        variant="secondary"
+                        className="bg-white/20 text-white border-white/30 hover:bg-white/30"
+                      >
+                        +{service.features.length - 3} more
+                      </Badge>
+                    )}
                   </div>
 
                   {/* CTA Button */}
                   <Button
                     variant="outline"
                     size="lg"
-                    className={`bg-white text-black border-white hover:bg-white/90 ${service.borderColor} w-full`}
+                    className={`bg-white text-black border-white hover:bg-white/90 ${service.borderColor} w-full group-hover:scale-105 transition-all duration-300`}
                   >
                     Learn More
-                    <ArrowUpRight className="w-4 h-4 ml-2" />
+                    <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                   </Button>
                 </div>
               ))}
             </div>
 
-            {/* Call to Action Section */}
-            <div className="mt-16 text-center">
-              <div className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl p-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Ready to Start Your Project?
-                </h2>
-                <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                  Let's discuss how we can help bring your ideas to life with our comprehensive development services.
-                </p>
-                <Button
-                  size="lg"
-                  className="bg-white text-black hover:bg-white/90 border-white"
-                >
-                  <Zap className="w-5 h-5 mr-2" />
-                  Get Started
-                  <ArrowUpRight className="w-4 h-4 ml-2" />
-                </Button>
+            {/* Enhanced Call to Action Section */}
+            <div className="text-center">
+              <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl p-12 relative overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="relative z-10">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                    Ready to Start Your Project?
+                  </h2>
+                  <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+                    Let's discuss how we can help bring your ideas to life with our comprehensive development services. 
+                    Get a free consultation and project estimate today.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button
+                      size="lg"
+                      className="bg-white text-black hover:bg-white/90 border-white px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                      onClick={handleGetStarted}
+                    >
+                      <Zap className="w-5 h-5 mr-2" />
+                      Get Started
+                      <ArrowUpRight className="w-4 h-4 ml-2" />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="bg-white/10 text-white border-white/30 hover:bg-white/20 px-8 py-3 rounded-full text-sm font-medium"
+                      onClick={() => window.location.href = '/projects'}
+                    >
+                      View Our Work
+                      <ArrowUpRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Service Modal */}
+      <ServiceModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        service={selectedService}
+      />
     </div>
   );
 };

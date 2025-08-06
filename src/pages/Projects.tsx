@@ -175,22 +175,22 @@ const Projects = () => {
                     <div className="relative">
                       {/* Desktop Mockup */}
                       <div className="relative mb-4">
-                        <div className="w-80 h-48 bg-gray-800 rounded-lg shadow-2xl border-4 border-gray-700 overflow-hidden">
+                        <div className="w-96 h-46 bg-gray-800 rounded-lg shadow-2xl border-4 border-gray-700 overflow-hidden">
                           <img 
                             src={getProjectImages(project.name).desktop} 
                             alt={getProjectImages(project.name).alt}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain bg-gray-900"
                           />
                         </div>
                       </div>
                       
                       {/* Mobile Mockup */}
                       <div className="absolute -bottom-4 -right-4">
-                        <div className="w-32 h-56 bg-gray-800 rounded-2xl shadow-2xl border-4 border-gray-700 overflow-hidden">
+                        <div className="w-40 h-64 bg-gray-800 rounded-2xl shadow-2xl border-4 border-gray-700 overflow-hidden">
                           <img 
                             src={getProjectImages(project.name).mobile} 
                             alt={getProjectImages(project.name).alt}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain bg-gray-900"
                           />
                         </div>
                       </div>

@@ -4,51 +4,124 @@
     "alt": "Bilal Malik - Full Stack Developer"
   },
   "projects": {
-    "catchcollect": {
-      "desktop": "/src/assets/Catch-Collect1.png",
-      "mobile": "/src/assets/Catch-Collect3.png",
+    "Catch-Collect": {
+      "desktop": "/src/assets/projects/Catch-Collect/Catch-Collect-Web.png",
+      "mobile": "/src/assets/projects/Catch-Collect/Catch-Collect-Mobile.png",
       "alt": "Catch Collect Platform"
     },
-    "pearstop": {
-      "desktop": "/src/assets/Pearstop1.png",
-      "mobile": "/src/assets/Pearstop1.png",
+    "Pearstop": {
+      "desktop": "/src/assets/projects/Pearstop/Pearstop-Web.png",
+      "mobile": "/src/assets/projects/Pearstop/Pearstop-Mobile.png",
       "alt": "Pearstop Solutions"
     },
-    "collectorhomebase": {
-      "desktop": "/src/assets/Collector-HomeBase1.png",
-      "mobile": "/src/assets/Collector-HomeBase2.png",
+    "Collector-HomeBase": {
+      "desktop": "/src/assets/projects/Collector-HomeBase/Collector-HomeBase-Web.png",
+      "mobile": "/src/assets/projects/Collector-HomeBase/Collector-HomeBase-Mobile.png",
       "alt": "Collector HomeBase"
     },
-    "visiondirect": {
-      "desktop": "/src/assets/Vision-Direct1.png",
-      "mobile": "/src/assets/Vision-Direct2.png",
+    "Vision-Direct": {
+      "desktop": "/src/assets/projects/Vision-Direct/Vision-Direct-Web.png",
+      "mobile": "/src/assets/projects/Vision-Direct/Vision-Direct-Mobile.png",
       "alt": "Vision Direct - AI-Powered Eye Care Platform"
     },
-    "mihub": {
-      "desktop": "/src/assets/Mi-Hub1.png",
-      "mobile": "/src/assets/Mi-Hub2.png",
+    "Mi-Hub": {
+      "desktop": "/src/assets/projects/Mi-Hub/Mi-Hub-Web.png",
+      "mobile": "/src/assets/projects/Mi-Hub/Mi-Hub-Mobile.png",
       "alt": "Mi Hub"
     },
-    "collectorhomebase2": {
-      "desktop": "/src/assets/Collector-HomeBase2.png",
-      "mobile": "/src/assets/Collector-HomeBase2.png",
-      "alt": "Collector HomeBase Mobile"
+    "Markata": {
+      "desktop": "/src/assets/projects/Markata/Markata-Web.png",
+      "mobile": "/src/assets/projects/Markata/Markata-Mobile.png",
+      "alt": "Markata E-commerce Platform"
     },
-    "catchcollect2": {
-      "desktop": "/src/assets/Catch-Collect2.png",
-      "mobile": "/src/assets/Catch-Collect2.png",
-      "alt": "Catch Collect Enhanced"
+    "Kryptonomy": {
+      "desktop": "/src/assets/projects/Kryptonomy/Kryptonomy-Web.png",
+      "mobile": "/src/assets/projects/Kryptonomy/Kryptonomy-Mobile.png",
+      "alt": "Kryptonomy Blockchain Platform"
     },
-    "visiondirect2": {
-      "desktop": "/src/assets/Vision-Direct2.png",
-      "mobile": "/src/assets/Vision-Direct2.png",
-      "alt": "Vision Direct Pro"
-    },
-    "mihub2": {
-      "desktop": "/src/assets/Mi-Hub2.png",
-      "mobile": "/src/assets/Mi-Hub2.png",
-      "alt": "Mi Hub Enterprise"
+    "Global Technology Innovation": {
+      "desktop": "/src/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Web.png",
+      "mobile": "/src/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Mobile.png",
+      "alt": "Global Technology Innovation Platform"
     }
+  },
+  "sequence": {
+    "Catch-Collect": [
+      "/src/assets/projects/Catch-Collect/1.png",
+      "/src/assets/projects/Catch-Collect/2.png",
+      "/src/assets/projects/Catch-Collect/3.png",
+      "/src/assets/projects/Catch-Collect/4.png",
+      "/src/assets/projects/Catch-Collect/5.png",
+      "/src/assets/projects/Catch-Collect/6.png",
+      "/src/assets/projects/Catch-Collect/7.png",
+      "/src/assets/projects/Catch-Collect/8.png",
+      "/src/assets/projects/Catch-Collect/9.png",
+      "/src/assets/projects/Catch-Collect/10.png",
+      "/src/assets/projects/Catch-Collect/11.png",
+      "/src/assets/projects/Catch-Collect/12.png",
+      "/src/assets/projects/Catch-Collect/13.png",
+      "/src/assets/projects/Catch-Collect/14.png",
+      "/src/assets/projects/Catch-Collect/15.png",
+      "/src/assets/projects/Catch-Collect/16.png"
+    ],
+    "Pearstop": [
+      "/src/assets/projects/Pearstop/1.png",
+      "/src/assets/projects/Pearstop/2.png",
+      "/src/assets/projects/Pearstop/3.png",
+      "/src/assets/projects/Pearstop/4.png",
+      "/src/assets/projects/Pearstop/5.png"
+    ],
+    "Collector-HomeBase": [
+      "/src/assets/projects/Collector-HomeBase/1.png",
+      "/src/assets/projects/Collector-HomeBase/2.png",
+      "/src/assets/projects/Collector-HomeBase/3.png",
+      "/src/assets/projects/Collector-HomeBase/4.png",
+      "/src/assets/projects/Collector-HomeBase/5.png",
+      "/src/assets/projects/Collector-HomeBase/6.png",
+      "/src/assets/projects/Collector-HomeBase/7.png",
+      "/src/assets/projects/Collector-HomeBase/8.png"
+    ],
+    "Vision-Direct": [
+      "/src/assets/projects/Vision-Direct/1.png",
+      "/src/assets/projects/Vision-Direct/2.png",
+      "/src/assets/projects/Vision-Direct/3.png",
+      "/src/assets/projects/Vision-Direct/4.png",
+      "/src/assets/projects/Vision-Direct/5.png",
+      "/src/assets/projects/Vision-Direct/6.png",
+      "/src/assets/projects/Vision-Direct/7.png",
+      "/src/assets/projects/Vision-Direct/8.png"
+    ],
+    "Mi-Hub": [
+      "/src/assets/projects/Mi-Hub/1.png",
+      "/src/assets/projects/Mi-Hub/2.png",
+      "/src/assets/projects/Mi-Hub/3.png",
+      "/src/assets/projects/Mi-Hub/4.png",
+      "/src/assets/projects/Mi-Hub/5.png",
+      "/src/assets/projects/Mi-Hub/6.png"
+    ],
+    "Markata": [
+      "/src/assets/projects/Markata/1.png",
+      "/src/assets/projects/Markata/2.png",
+      "/src/assets/projects/Markata/3.png",
+      "/src/assets/projects/Markata/4.png",
+      "/src/assets/projects/Markata/5.png",
+      "/src/assets/projects/Markata/6.png"
+    ],
+    "Kryptonomy": [
+      "/src/assets/projects/Kryptonomy/1.png",
+      "/src/assets/projects/Kryptonomy/2.png",
+      "/src/assets/projects/Kryptonomy/3.png"
+    ],
+    "Global Technology Innovation": [
+      "/src/assets/projects/Global Technology Innovation/1.png",
+      "/src/assets/projects/Global Technology Innovation/2.png",
+      "/src/assets/projects/Global Technology Innovation/3.png",
+      "/src/assets/projects/Global Technology Innovation/4.png",
+      "/src/assets/projects/Global Technology Innovation/5.png",
+      "/src/assets/projects/Global Technology Innovation/6.png",
+      "/src/assets/projects/Global Technology Innovation/7.png",
+      "/src/assets/projects/Global Technology Innovation/8.png"
+    ]
   },
   "testimonials": {
     "sarah": {

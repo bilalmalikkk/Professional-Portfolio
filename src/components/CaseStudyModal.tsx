@@ -2,8 +2,15 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
-import { getProjectImages } from "@/utils/imageUtils";
+import { getProjectImages, getProjectSequenceImages } from "@/utils/imageUtils";
 import { type Project } from "@/data/projects";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface CaseStudyModalProps {
   isOpen: boolean;
@@ -15,6 +22,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
   if (!project) return null;
 
   const projectImages = getProjectImages(project.name);
+  const sequenceImages = getProjectSequenceImages(project.name);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -53,7 +61,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
             </div>
 
             {/* Description */}
-            <p className="text-white/80 text-lg leading-relaxed text-center max-w-4xl mx-auto">
+            <p className="text-lg text-white/80 text-center leading-relaxed max-w-4xl mx-auto">
               {project.description}
             </p>
 
@@ -74,6 +82,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
           {/* Project Images */}
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-white text-center">Project Screenshots</h3>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Desktop Screenshot */}
               <div className="space-y-4">
@@ -99,17 +108,51 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
                 </div>
               </div>
             </div>
+
+            {/* Sequence Images Carousel */}
+            {sequenceImages.length > 0 && (
+              <div className="space-y-4">
+                <h4 className="text-lg font-medium text-white/80 text-center">Project Gallery</h4>
+                <div className="relative">
+                  <Carousel
+                    opts={{
+                      align: "start",
+                      loop: true,
+                    }}
+                    className="w-full"
+                  >
+                    <CarouselContent>
+                      {sequenceImages.map((image, index) => (
+                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                          <div className="p-1">
+                            <div className="w-full h-48 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-lg border border-white/10 overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                              <img 
+                                src={image} 
+                                alt={`${project.name} screenshot ${index + 1}`}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="bg-white/10 border-white/20 text-white hover:bg-white/20" />
+                    <CarouselNext className="bg-white/10 border-white/20 text-white hover:bg-white/20" />
+                  </Carousel>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Tech Stack */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white text-center">Technologies Used</h3>
+            <h3 className="text-2xl font-bold text-white text-center">Technology Stack</h3>
             <div className="flex flex-wrap gap-3 justify-center">
               {project.techStack.map((tech) => (
                 <Badge
                   key={tech}
                   variant="secondary"
-                  className="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 text-white border-orange-500/30 hover:from-orange-500/30 hover:to-yellow-500/30 px-4 py-2 rounded-full"
+                  className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border-blue-500/30 hover:from-blue-500/30 hover:to-purple-500/30 px-4 py-2 rounded-full"
                 >
                   {tech}
                 </Badge>
@@ -117,53 +160,50 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
             </div>
           </div>
 
-          {/* Project Details */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white text-center">Project Details</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-4 p-6 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-2xl border border-orange-500/20">
-                <h4 className="text-xl font-bold text-white text-center">Key Features</h4>
-                <ul className="space-y-3 text-white/80">
-                  <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Responsive design for all devices</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Modern UI/UX with intuitive navigation</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Scalable architecture for future growth</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Performance optimized for speed</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="space-y-4 p-6 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-2xl border border-orange-500/20">
-                <h4 className="text-xl font-bold text-white text-center">Development Process</h4>
-                <ul className="space-y-3 text-white/80">
-                  <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Agile methodology with iterative development</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Continuous integration and deployment</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Comprehensive testing and quality assurance</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Regular client feedback and iterations</span>
-                  </li>
-                </ul>
-              </div>
+          {/* Project Features and Benefits */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-4 p-6 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-2xl border border-orange-500/20">
+              <h4 className="text-xl font-bold text-white text-center">Key Features</h4>
+              <ul className="space-y-3 text-white/80">
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Responsive design for all devices</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Modern UI/UX with intuitive navigation</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Scalable architecture for future growth</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Performance optimized for speed</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="space-y-4 p-6 bg-gradient-to-br from-green-500/10 to-blue-500/10 rounded-2xl border border-green-500/20">
+              <h4 className="text-xl font-bold text-white text-center">Project Benefits</h4>
+              <ul className="space-y-3 text-white/80">
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-gradient-to-r from-green-500 to-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Enhanced user experience and engagement</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-gradient-to-r from-green-500 to-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Improved efficiency and productivity</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-gradient-to-r from-green-500 to-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Reduced operational costs</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-gradient-to-r from-green-500 to-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Future-proof technology stack</span>
+                </li>
+              </ul>
             </div>
           </div>
 

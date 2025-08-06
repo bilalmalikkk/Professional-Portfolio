@@ -6,31 +6,68 @@ This portfolio uses a scalable project structure that makes it easy to add new p
 ## Project Folder Structure
 ```
 src/assets/projects/
-├── catchcollect/
-│   ├── Catch-Collect1.png (desktop)
-│   ├── Catch-Collect2.png (additional)
-│   └── Catch-Collect3.png (mobile)
-├── pearstop/
-│   └── Pearstop1.png
-├── collectorhomebase/
-│   ├── Collector-HomeBase1.png (desktop)
-│   └── Collector-HomeBase2.png (mobile)
-├── visiondirect/
-│   ├── Vision-Direct1.png (desktop)
-│   └── Vision-Direct2.png (mobile)
-└── mihub/
-    ├── Mi-Hub1.png (desktop)
-    └── Mi-Hub2.png (mobile)
+├── Catch-Collect/
+│   ├── Catch-Collect-Web.png (desktop)
+│   ├── Catch-Collect-Mobile.png (mobile)
+│   ├── 1.png (sequence)
+│   ├── 2.png (sequence)
+│   ├── 3.png (sequence)
+│   └── ... (up to 16.png)
+├── Pearstop/
+│   ├── Pearstop-Web.png (desktop)
+│   ├── Pearstop-Mobile.png (mobile)
+│   ├── 1.png (sequence)
+│   ├── 2.png (sequence)
+│   └── ... (up to 5.png)
+├── Collector-HomeBase/
+│   ├── Collector-HomeBase-Web.png (desktop)
+│   ├── Collector-HomeBase-Mobile.png (mobile)
+│   ├── 1.png (sequence)
+│   ├── 2.png (sequence)
+│   └── ... (up to 8.png)
+├── Vision-Direct/
+│   ├── Vision-Direct-Web.png (desktop)
+│   ├── Vision-Direct-Mobile.png (mobile)
+│   ├── 1.png (sequence)
+│   ├── 2.png (sequence)
+│   └── ... (up to 8.png)
+├── Mi-Hub/
+│   ├── Mi-Hub-Web.png (desktop)
+│   ├── Mi-Hub-Mobile.png (mobile)
+│   ├── 1.png (sequence)
+│   ├── 2.png (sequence)
+│   └── ... (up to 6.png)
+├── Markata/
+│   ├── Markata-Web.png (desktop)
+│   ├── Markata-Mobile.png (mobile)
+│   ├── 1.png (sequence)
+│   ├── 2.png (sequence)
+│   └── ... (up to 6.png)
+├── Kryptonomy/
+│   ├── Kryptonomy-Web.png (desktop)
+│   ├── Kryptonomy-Mobile.png (mobile)
+│   ├── 1.png (sequence)
+│   ├── 2.png (sequence)
+│   └── 3.png (sequence)
+└── Global Technology Innovation/
+    ├── Global-Technology-Innovation-Web.png (desktop)
+    ├── Global-Technology-Innovation-Mobile.png (mobile)
+    ├── 1.png (sequence)
+    ├── 2.png (sequence)
+    └── ... (up to 8.png)
 ```
 
 ## How to Add a New Project
 
 ### 1. Create Project Folder
-Create a new folder in `src/assets/projects/` with your project name:
+Create a new folder in `src/assets/projects/` with your project name using proper capitalization:
 ```
-src/assets/projects/your-project-name/
-├── your-project-desktop.png
-└── your-project-mobile.png
+src/assets/projects/Your-Project-Name/
+├── Your-Project-Name-Web.png
+├── Your-Project-Name-Mobile.png
+├── 1.png
+├── 2.png
+└── ... (additional sequence images)
 ```
 
 ### 2. Add Project Data
@@ -39,7 +76,7 @@ Edit `src/data/projects.ts` and add your new project to the `projects` array:
 ```typescript
 {
   id: "your-project-id",
-  name: "yourprojectname",
+  name: "Your-Project-Name",
   title: "Your Project Title",
   description: "Your project description...",
   category: ["Category1", "Category2"],
@@ -47,8 +84,8 @@ Edit `src/data/projects.ts` and add your new project to the `projects` array:
   color: "bg-blue-500",
   borderColor: "border-blue-500",
   images: {
-    desktop: "/src/assets/projects/yourprojectname/your-project-desktop.png",
-    mobile: "/src/assets/projects/yourprojectname/your-project-mobile.png",
+    desktop: "/src/assets/projects/Your-Project-Name/Your-Project-Name-Web.png",
+    mobile: "/src/assets/projects/Your-Project-Name/Your-Project-Name-Mobile.png",
     alt: "Your Project Alt Text"
   },
   featured: true, // Optional: mark as featured
@@ -64,28 +101,69 @@ Edit `src/data/projects.ts` and add your new project to the `projects` array:
 Add your image imports to `src/utils/imageUtils.ts`:
 
 ```typescript
-import YourProjectDesktop from '@/assets/projects/yourprojectname/your-project-desktop.png';
-import YourProjectMobile from '@/assets/projects/yourprojectname/your-project-mobile.png';
+import YourProjectWeb from '@/assets/projects/Your-Project-Name/Your-Project-Name-Web.png';
+import YourProjectMobile from '@/assets/projects/Your-Project-Name/Your-Project-Name-Mobile.png';
+import YourProject1 from '@/assets/projects/Your-Project-Name/1.png';
+import YourProject2 from '@/assets/projects/Your-Project-Name/2.png';
+// ... add all sequence images
 
 // Add to assetMap
 const assetMap: { [key: string]: string } = {
   // ... existing mappings
-  '/src/assets/projects/yourprojectname/your-project-desktop.png': YourProjectDesktop,
-  '/src/assets/projects/yourprojectname/your-project-mobile.png': YourProjectMobile,
+  '/src/assets/projects/Your-Project-Name/Your-Project-Name-Web.png': YourProjectWeb,
+  '/src/assets/projects/Your-Project-Name/Your-Project-Name-Mobile.png': YourProjectMobile,
+  '/src/assets/projects/Your-Project-Name/1.png': YourProject1,
+  '/src/assets/projects/Your-Project-Name/2.png': YourProject2,
+  // ... add all sequence images
 };
 
 // Add to getProjectImages function
 export const getProjectImages = (projectName: string) => {
   const imageMap = {
     // ... existing mappings
-    yourprojectname: {
-      desktop: resolveAssetPath('/src/assets/projects/yourprojectname/your-project-desktop.png'),
-      mobile: resolveAssetPath('/src/assets/projects/yourprojectname/your-project-mobile.png'),
+    'Your-Project-Name': {
+      desktop: resolveAssetPath('/src/assets/projects/Your-Project-Name/Your-Project-Name-Web.png'),
+      mobile: resolveAssetPath('/src/assets/projects/Your-Project-Name/Your-Project-Name-Mobile.png'),
       alt: "Your Project Alt Text"
     }
   };
   return imageMap[projectName] || { desktop: '', mobile: '', alt: '' };
 };
+
+// Add to getProjectSequenceImages function
+export const getProjectSequenceImages = (projectName: string): string[] => {
+  const sequenceMap = {
+    // ... existing mappings
+    'Your-Project-Name': [
+      resolveAssetPath('/src/assets/projects/Your-Project-Name/1.png'),
+      resolveAssetPath('/src/assets/projects/Your-Project-Name/2.png'),
+      // ... add all sequence images
+    ]
+  };
+  return sequenceMap[projectName] || [];
+};
+```
+
+### 4. Update Images JSON
+Add your project to `src/data/images.json`:
+
+```json
+{
+  "projects": {
+    "Your-Project-Name": {
+      "desktop": "/src/assets/projects/Your-Project-Name/Your-Project-Name-Web.png",
+      "mobile": "/src/assets/projects/Your-Project-Name/Your-Project-Name-Mobile.png",
+      "alt": "Your Project Alt Text"
+    }
+  },
+  "sequence": {
+    "Your-Project-Name": [
+      "/src/assets/projects/Your-Project-Name/1.png",
+      "/src/assets/projects/Your-Project-Name/2.png",
+      // ... add all sequence images
+    ]
+  }
+}
 ```
 
 ## Benefits of This Structure
@@ -118,9 +196,9 @@ export const getProjectImages = (projectName: string) => {
 ## Image Naming Convention
 
 For consistency, use these naming conventions:
-- **Desktop screenshots**: `project-name-desktop.png` or `Project-Name1.png`
-- **Mobile screenshots**: `project-name-mobile.png` or `Project-Name2.png`
-- **Additional screenshots**: `Project-Name3.png`, `Project-Name4.png`, etc.
+- **Desktop screenshots**: `Project-Name-Web.png`
+- **Mobile screenshots**: `Project-Name-Mobile.png`
+- **Sequence screenshots**: `1.png`, `2.png`, `3.png`, etc.
 
 ## Filtering and Search
 
@@ -136,8 +214,8 @@ Categories and tech stacks are automatically generated from the project data. Ju
 
 ## Best Practices
 
-1. **Folder Naming**: Use lowercase with hyphens for folder names (e.g., `my-project`)
-2. **Image Naming**: Use descriptive names that indicate the view (desktop/mobile)
+1. **Folder Naming**: Use proper capitalization with hyphens for folder names (e.g., `My-Project`)
+2. **Image Naming**: Use descriptive names that indicate the view (Web/Mobile) and sequence numbers
 3. **Image Quality**: Use high-quality screenshots (recommended: 1920x1080 for desktop, 375x812 for mobile)
 4. **File Size**: Optimize images for web (recommended: under 500KB each)
 5. **Consistency**: Keep the same aspect ratios across all project images 

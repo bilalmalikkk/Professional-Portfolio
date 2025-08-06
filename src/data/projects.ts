@@ -22,29 +22,50 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "catchcollect",
-    name: "catchcollect",
-    title: "Catch Collect Platform",
-    description: "A comprehensive digital collection management platform that enables users to organize, track, and showcase their valuable collections. Features advanced categorization, valuation tracking, and social sharing capabilities.",
-    category: ["Digital Collections", "Platform", "Social"],
-    techStack: ["React", "TypeScript", "Node.js", "MongoDB"],
-    color: "bg-blue-500",
-    borderColor: "border-blue-500",
+    id: "globaltechinnovation",
+    name: "Global Technology Innovation",
+    title: "Global Technology Innovation",
+    description: "An innovative technology consulting platform that connects businesses with cutting-edge solutions and digital transformation services.",
+    category: ["Consulting", "Technology", "Innovation"],
+    techStack: ["Vue.js", "Python", "AWS", "Machine Learning"],
+    color: "bg-teal-500",
+    borderColor: "border-teal-500",
     images: {
-      desktop: "/src/assets/projects/catchcollect/Catch-Collect1.png",
-      mobile: "/src/assets/projects/catchcollect/Catch-Collect3.png",
-      alt: "Catch Collect Platform"
+      desktop: "/src/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Web.png",
+      mobile: "/src/assets/projects/Global Technology Innovation/Global-Technology-Innovation-Mobile.png",
+      alt: "Global Technology Innovation Platform"
     },
     featured: true,
-    year: 2024,
-    client: "Private Client",
-    duration: "3 months",
-    liveUrl: "https://catchcollect.com",
-    githubUrl: "https://github.com/bilal/catchcollect"
+    year: 2023,
+    client: "Global Tech Corp",
+    duration: "7 months",
+    liveUrl: "https://globaltechinnovation.com",
+    githubUrl: "https://github.com/bilal/globaltechinnovation"
+  },
+  {
+    id: "kryptonomy",
+    name: "Kryptonomy",
+    title: "Kryptonomy",
+    description: "A blockchain-based financial platform that provides secure cryptocurrency trading and portfolio management with real-time market analysis.",
+    category: ["Blockchain", "Finance", "Cryptocurrency"],
+    techStack: ["React", "Solidity", "Web3.js", "Ethereum"],
+    color: "bg-yellow-500",
+    borderColor: "border-yellow-500",
+    images: {
+      desktop: "/src/assets/projects/Kryptonomy/Kryptonomy-Web.png",
+      mobile: "/src/assets/projects/Kryptonomy/Kryptonomy-Mobile.png",
+      alt: "Kryptonomy Blockchain Platform"
+    },
+    featured: true,
+    year: 2023,
+    client: "Kryptonomy Labs",
+    duration: "6 months",
+    liveUrl: "https://kryptonomy.com",
+    githubUrl: "https://github.com/bilal/kryptonomy"
   },
   {
     id: "pearstop",
-    name: "pearstop",
+    name: "Pearstop",
     title: "Pearstop Solutions",
     description: "An innovative business management solution that streamlines operations and enhances productivity. Provides comprehensive tools for inventory management, customer relations, and analytics.",
     category: ["Business Management", "Analytics", "Productivity"],
@@ -52,8 +73,8 @@ export const projects: Project[] = [
     color: "bg-green-500",
     borderColor: "border-green-500",
     images: {
-      desktop: "/src/assets/projects/pearstop/Pearstop1.png",
-      mobile: "/src/assets/projects/pearstop/Pearstop1.png",
+      desktop: "/src/assets/projects/Pearstop/Pearstop-Web.png",
+      mobile: "/src/assets/projects/Pearstop/Pearstop-Mobile.png",
       alt: "Pearstop Solutions"
     },
     featured: true,
@@ -64,8 +85,29 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/bilal/pearstop"
   },
   {
+    id: "markata",
+    name: "Markata",
+    title: "Markata",
+    description: "A modern e-commerce platform designed for seamless online shopping experiences with advanced product management and customer engagement features.",
+    category: ["E-commerce", "Retail", "Platform"],
+    techStack: ["React", "Node.js", "MongoDB", "Stripe"],
+    color: "bg-pink-500",
+    borderColor: "border-pink-500",
+    images: {
+      desktop: "/src/assets/projects/Markata/Markata-Web.png",
+      mobile: "/src/assets/projects/Markata/Markata-Mobile.png",
+      alt: "Markata E-commerce Platform"
+    },
+    featured: true,
+    year: 2023,
+    client: "Markata Retail",
+    duration: "4 months",
+    liveUrl: "https://markata.com",
+    githubUrl: "https://github.com/bilal/markata"
+  },
+  {
     id: "collectorhomebase",
-    name: "collectorhomebase",
+    name: "Collector-HomeBase",
     title: "Collector HomeBase",
     description: "A specialized platform for collectors to manage their collections with advanced features like condition tracking, market value monitoring, and community engagement tools.",
     category: ["Collector Tools", "Community", "Analytics"],
@@ -73,8 +115,8 @@ export const projects: Project[] = [
     color: "bg-purple-500",
     borderColor: "border-purple-500",
     images: {
-      desktop: "/src/assets/projects/collectorhomebase/Collector-HomeBase1.png",
-      mobile: "/src/assets/projects/collectorhomebase/Collector-HomeBase2.png",
+      desktop: "/src/assets/projects/Collector-HomeBase/Collector-HomeBase-Web.png",
+      mobile: "/src/assets/projects/Collector-HomeBase/Collector-HomeBase-Mobile.png",
       alt: "Collector HomeBase"
     },
     featured: true,
@@ -85,29 +127,8 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/bilal/collectorhomebase"
   },
   {
-    id: "visiondirect",
-    name: "visiondirect",
-    title: "Vision Direct",
-    description: "A cutting-edge vision technology platform that provides advanced optical solutions and personalized eye care recommendations through AI-powered diagnostics.",
-    category: ["Healthcare", "AI", "Optical"],
-    techStack: ["React Native", "TensorFlow", "Python", "Azure"],
-    color: "bg-indigo-500",
-    borderColor: "border-indigo-500",
-    images: {
-      desktop: "/src/assets/projects/visiondirect/Vision-Direct1.png",
-      mobile: "/src/assets/projects/visiondirect/Vision-Direct2.png",
-      alt: "Vision Direct - AI-Powered Eye Care Platform"
-    },
-    featured: true,
-    year: 2023,
-    client: "Vision Direct Ltd.",
-    duration: "8 months",
-    liveUrl: "https://visiondirect.com",
-    githubUrl: "https://github.com/bilal/visiondirect"
-  },
-  {
     id: "mihub",
-    name: "mihub",
+    name: "Mi-Hub",
     title: "Mi Hub",
     description: "A centralized hub for managing multiple digital services and integrations. Provides seamless connectivity between various platforms and tools.",
     category: ["Integration", "Platform", "Connectivity"],
@@ -115,8 +136,8 @@ export const projects: Project[] = [
     color: "bg-orange-500",
     borderColor: "border-orange-500",
     images: {
-      desktop: "/src/assets/projects/mihub/Mi-Hub1.png",
-      mobile: "/src/assets/projects/mihub/Mi-Hub2.png",
+      desktop: "/src/assets/projects/Mi-Hub/Mi-Hub-Web.png",
+      mobile: "/src/assets/projects/Mi-Hub/Mi-Hub-Mobile.png",
       alt: "Mi Hub"
     },
     featured: true,
@@ -125,6 +146,48 @@ export const projects: Project[] = [
     duration: "5 months",
     liveUrl: "https://mihub.com",
     githubUrl: "https://github.com/bilal/mihub"
+  },
+  {
+    id: "catchcollect",
+    name: "Catch-Collect",
+    title: "Catch Collect Platform",
+    description: "A comprehensive digital collection management platform that enables users to organize, track, and showcase their valuable collections. Features advanced categorization, valuation tracking, and social sharing capabilities.",
+    category: ["Digital Collections", "Platform", "Social"],
+    techStack: ["React", "TypeScript", "Node.js", "MongoDB"],
+    color: "bg-blue-500",
+    borderColor: "border-blue-500",
+    images: {
+      desktop: "/src/assets/projects/Catch-Collect/Catch-Collect-Web.png",
+      mobile: "/src/assets/projects/Catch-Collect/Catch-Collect-Mobile.png",
+      alt: "Catch Collect Platform"
+    },
+    featured: true,
+    year: 2024,
+    client: "Private Client",
+    duration: "3 months",
+    liveUrl: "https://catchcollect.com",
+    githubUrl: "https://github.com/bilal/catchcollect"
+  },
+  {
+    id: "visiondirect",
+    name: "Vision-Direct",
+    title: "Vision Direct",
+    description: "A cutting-edge vision technology platform that provides advanced optical solutions and personalized eye care recommendations through AI-powered diagnostics.",
+    category: ["Healthcare", "AI", "Optical"],
+    techStack: ["React Native", "TensorFlow", "Python", "Azure"],
+    color: "bg-indigo-500",
+    borderColor: "border-indigo-500",
+    images: {
+      desktop: "/src/assets/projects/Vision-Direct/Vision-Direct-Web.png",
+      mobile: "/src/assets/projects/Vision-Direct/Vision-Direct-Mobile.png",
+      alt: "Vision Direct - AI-Powered Eye Care Platform"
+    },
+    featured: true,
+    year: 2023,
+    client: "Vision Direct Ltd.",
+    duration: "8 months",
+    liveUrl: "https://visiondirect.com",
+    githubUrl: "https://github.com/bilal/visiondirect"
   }
 ];
 
@@ -140,12 +203,10 @@ export const getProjectsByTech = (tech: string) =>
 export const getProjectById = (id: string) => 
   projects.find(project => project.id === id);
 
-export const getAllCategories = () => {
-  const categories = new Set<string>();
-  projects.forEach(project => {
-    project.category.forEach(cat => categories.add(cat));
-  });
-  return Array.from(categories);
+// Helper function to get all unique categories
+export const getAllCategories = (): string[] => {
+  const categories = projects.flatMap(project => project.category);
+  return [...new Set(categories)];
 };
 
 export const getAllTechStacks = () => {

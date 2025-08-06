@@ -19,8 +19,8 @@ const Projects = () => {
     setSelectedProject(null);
   };
 
-  // Get the first 6 projects for the grid display
-  const displayProjects = projects.slice(0, 6);
+  // Show only the first 9 projects
+  const displayProjects = projects.slice(0, 9);
 
   return (
     <section id="projects" className="py-20 px-6">
@@ -45,6 +45,14 @@ const Projects = () => {
                   
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                  
+                  {/* Project Info Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white text-lg font-semibold mb-2">{project.title}</h3>
+                      <p className="text-white/80 text-sm line-clamp-2">{project.description}</p>
+                    </div>
+                  </div>
                   
                   {/* View Casestudy Button */}
                   <div 
