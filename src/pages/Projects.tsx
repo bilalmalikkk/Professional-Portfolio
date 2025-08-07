@@ -7,6 +7,7 @@ import CaseStudyModal from "@/components/CaseStudyModal";
 import { useState } from "react";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import { projects, getAllCategories, type Project } from "@/data/projects";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Projects = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,11 +70,25 @@ const Projects = () => {
 
             {/* Projects Grid */}
             <div className="space-y-6 sm:space-y-8">
-              {filteredProjects.map((project) => (
-                <div
-                  key={project.id}
-                  className={`${project.color} rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 min-h-[400px] sm:min-h-[450px] flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12`}
-                >
+              {filteredProjects.map((project, index) => {
+                const { elementRef, isVisible } = useScrollAnimation({
+                  threshold: 0.2,
+                  rootMargin: '0px 0px -100px 0px'
+                });
+
+                return (
+                  <div
+                    ref={elementRef}
+                    key={project.id}
+                    className={`${project.color} rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 min-h-[400px] sm:min-h-[450px] flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12 project-card transform transition-all duration-1000 ease-out ${
+                      isVisible 
+                        ? 'card-stack-enter' 
+                        : 'translate-y-16 opacity-0'
+                    }`}
+                    style={{
+                      transitionDelay: `${index * 200}ms`
+                    }}
+                  >
                   {/* Content */}
                   <div className="flex-1 space-y-4 sm:space-y-6">
                     {/* Project Name */}
@@ -198,7 +213,8 @@ const Projects = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              );
+            })}
             </div>
           </div>
         </div>

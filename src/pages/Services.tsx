@@ -5,6 +5,7 @@ import { ArrowUpRight, Code, Palette, Smartphone, Globe, Database, Shield, Zap, 
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ServiceModal from "@/components/ServiceModal";
 import { useState } from "react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Services = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -103,50 +104,112 @@ const Services = () => {
         <div className="pt-20 px-6">
           <div className="max-w-7xl mx-auto">
             {/* Enhanced Header */}
-            <div className="mb-16 text-center">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Star className="w-6 h-6 text-yellow-400" />
-                <span className="text-yellow-400 text-sm font-medium">Our Services</span>
-                <Star className="w-6 h-6 text-yellow-400" />
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                Comprehensive
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500"> Development</span>
-                <br />Solutions
-              </h1>
-              <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-                We offer end-to-end development services that transform your ideas into powerful, scalable applications. 
-                From concept to deployment, we're with you every step of the way.
-              </p>
-            </div>
+            {(() => {
+              const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation({
+                threshold: 0.2,
+                rootMargin: '0px 0px -100px 0px'
+              });
+              
+              return (
+                <div 
+                  ref={headerRef}
+                  className={`mb-16 text-center transform transition-all duration-1000 ease-out ${
+                    headerVisible 
+                      ? 'header-enter' 
+                      : 'translate-y-8 opacity-0'
+                  }`}
+                >
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <Star className="w-6 h-6 text-yellow-400" />
+                    <span className="text-yellow-400 text-sm font-medium">Our Services</span>
+                    <Star className="w-6 h-6 text-yellow-400" />
+                  </div>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                    Comprehensive
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500"> Development</span>
+                    <br />Solutions
+                  </h1>
+                  <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+                    We offer end-to-end development services that transform your ideas into powerful, scalable applications. 
+                    From concept to deployment, we're with you every step of the way.
+                  </p>
+                </div>
+              );
+            })()}
 
             {/* Stats Section */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              <div className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl border border-blue-500/20">
-                <TrendingUp className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                <h3 className="text-3xl font-bold text-white mb-2">50+</h3>
-                <p className="text-white/70">Projects Completed</p>
-              </div>
-              <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-teal-500/10 rounded-2xl border border-green-500/20">
-                <Award className="w-12 h-12 text-green-400 mx-auto mb-4" />
-                <h3 className="text-3xl font-bold text-white mb-2">100%</h3>
-                <p className="text-white/70">Client Satisfaction</p>
-              </div>
-              <div className="text-center p-6 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-2xl border border-orange-500/20">
-                <Zap className="w-12 h-12 text-orange-400 mx-auto mb-4" />
-                <h3 className="text-3xl font-bold text-white mb-2">24/7</h3>
-                <p className="text-white/70">Support Available</p>
-              </div>
+              {[
+                {
+                  icon: <TrendingUp className="w-12 h-12 text-blue-400 mx-auto mb-4" />,
+                  value: "50+",
+                  label: "Projects Completed",
+                  gradient: "from-blue-500/10 to-purple-500/10",
+                  border: "border-blue-500/20"
+                },
+                {
+                  icon: <Award className="w-12 h-12 text-green-400 mx-auto mb-4" />,
+                  value: "100%",
+                  label: "Client Satisfaction",
+                  gradient: "from-green-500/10 to-teal-500/10",
+                  border: "border-green-500/20"
+                },
+                {
+                  icon: <Zap className="w-12 h-12 text-orange-400 mx-auto mb-4" />,
+                  value: "24/7",
+                  label: "Support Available",
+                  gradient: "from-orange-500/10 to-yellow-500/10",
+                  border: "border-orange-500/20"
+                }
+              ].map((stat, index) => {
+                const { elementRef, isVisible } = useScrollAnimation({
+                  threshold: 0.2,
+                  rootMargin: '0px 0px -50px 0px'
+                });
+
+                return (
+                  <div
+                    ref={elementRef}
+                    key={index}
+                    className={`text-center p-6 bg-gradient-to-br ${stat.gradient} rounded-2xl border ${stat.border} transform transition-all duration-1000 ease-out ${
+                      isVisible 
+                        ? 'card-stack-enter' 
+                        : 'translate-y-12 opacity-0'
+                    }`}
+                    style={{
+                      transitionDelay: `${index * 200}ms`
+                    }}
+                  >
+                    {stat.icon}
+                    <h3 className="text-3xl font-bold text-white mb-2">{stat.value}</h3>
+                    <p className="text-white/70">{stat.label}</p>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Services Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-              {services.map((service) => (
-                <div
-                  key={service.id}
-                  className={`${service.color} rounded-3xl p-8 min-h-[450px] flex flex-col group hover:scale-105 transition-all duration-300 cursor-pointer`}
-                  onClick={() => handleLearnMore(service)}
-                >
+              {services.map((service, index) => {
+                const { elementRef, isVisible } = useScrollAnimation({
+                  threshold: 0.2,
+                  rootMargin: '0px 0px -100px 0px'
+                });
+
+                return (
+                  <div
+                    ref={elementRef}
+                    key={service.id}
+                    className={`${service.color} rounded-3xl p-8 min-h-[450px] flex flex-col group hover:scale-105 transition-all duration-300 cursor-pointer transform transition-all duration-1000 ease-out ${
+                      isVisible 
+                        ? 'card-stack-enter' 
+                        : 'translate-y-16 opacity-0'
+                    }`}
+                    style={{
+                      transitionDelay: `${index * 200}ms`
+                    }}
+                    onClick={() => handleLearnMore(service)}
+                  >
                   {/* Service Header */}
                   <div className="flex items-center gap-3 mb-6">
                     <div className="text-white group-hover:scale-110 transition-transform duration-300">
@@ -211,7 +274,8 @@ const Services = () => {
                     <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                   </Button>
                 </div>
-              ))}
+              );
+            })}
             </div>
 
             {/* Enhanced Call to Action Section */}

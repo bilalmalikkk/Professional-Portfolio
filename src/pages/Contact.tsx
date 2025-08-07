@@ -8,6 +8,7 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 import { useState, useEffect } from "react";
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '@/config/emailjs';
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -141,43 +142,90 @@ Please contact: ${formData.email}
         <div className="pt-20 px-6">
           <div className="max-w-7xl mx-auto">
                          {/* Header Section */}
-             <div className="text-center mb-8 md:mb-16">
-               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4">
-                 Get In Touch
-               </h1>
-               <p className="text-base md:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto px-4">
-                 Ready to start your next project? Let's discuss how we can help bring your ideas to life.
-               </p>
-             </div>
+             {(() => {
+               const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation({
+                 threshold: 0.2,
+                 rootMargin: '0px 0px -100px 0px'
+               });
+               
+               return (
+                 <div 
+                   ref={headerRef}
+                   className={`text-center mb-8 md:mb-16 transform transition-all duration-1000 ease-out ${
+                     headerVisible 
+                       ? 'header-enter' 
+                       : 'translate-y-8 opacity-0'
+                   }`}
+                 >
+                   <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4">
+                     Get In Touch
+                   </h1>
+                   <p className="text-base md:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto px-4">
+                     Ready to start your next project? Let's discuss how we can help bring your ideas to life.
+                   </p>
+                 </div>
+               );
+             })()}
 
                          {/* Main Content Grid - Two Columns */}
              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
                
                {/* Contact Information - Left Column */}
-               <div className="lg:col-span-1">
-                 <div className="bg-card border border-border rounded-2xl p-6 md:p-8 h-auto lg:h-[730px] flex flex-col">
-                   <h2 className="text-xl md:text-2xl font-bold text-white mb-6">Contact Information</h2>
-                   <div className="space-y-4 flex-1">
-                     {contactInfo.map((info, index) => (
-                       <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-background/50">
-                         <div className="text-primary mt-1">
-                           {info.icon}
-                         </div>
-                         <div>
-                           <h3 className="text-white font-semibold text-sm">{info.title}</h3>
-                           <p className="text-white text-base font-medium">{info.value}</p>
-                           <p className="text-xs text-gray-400">{info.description}</p>
-                         </div>
+               {(() => {
+                 const { elementRef: contactInfoRef, isVisible: contactInfoVisible } = useScrollAnimation({
+                   threshold: 0.2,
+                   rootMargin: '0px 0px -100px 0px'
+                 });
+
+                 return (
+                   <div className="lg:col-span-1">
+                     <div 
+                       ref={contactInfoRef}
+                       className={`bg-card border border-border rounded-2xl p-6 md:p-8 h-auto lg:h-[730px] flex flex-col transform transition-all duration-1000 ease-out ${
+                         contactInfoVisible 
+                           ? 'card-stack-enter' 
+                           : 'translate-y-16 opacity-0'
+                       }`}
+                     >
+                       <h2 className="text-xl md:text-2xl font-bold text-white mb-6">Contact Information</h2>
+                       <div className="space-y-4 flex-1">
+                         {contactInfo.map((info, index) => (
+                           <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-background/50">
+                             <div className="text-primary mt-1">
+                               {info.icon}
+                             </div>
+                             <div>
+                               <h3 className="text-white font-semibold text-sm">{info.title}</h3>
+                               <p className="text-white text-base font-medium">{info.value}</p>
+                               <p className="text-xs text-gray-400">{info.description}</p>
+                             </div>
+                           </div>
+                         ))}
                        </div>
-                     ))}
+                     </div>
                    </div>
-                 </div>
-               </div>
+                 );
+               })()}
 
                {/* Contact Form - Right Column */}
-               <div className="lg:col-span-1">
-                 <div className="bg-card border border-border rounded-2xl p-6 md:p-8 h-auto lg:h-[730px] flex flex-col">
-                                     <h2 className="text-xl md:text-2xl font-bold text-white mb-6">Send a Message</h2>
+               {(() => {
+                 const { elementRef: contactFormRef, isVisible: contactFormVisible } = useScrollAnimation({
+                   threshold: 0.2,
+                   rootMargin: '0px 0px -100px 0px'
+                 });
+
+                 return (
+                   <div className="lg:col-span-1">
+                     <div 
+                       ref={contactFormRef}
+                       className={`bg-card border border-border rounded-2xl p-6 md:p-8 h-auto lg:h-[730px] flex flex-col transform transition-all duration-1000 ease-out ${
+                         contactFormVisible 
+                           ? 'card-stack-enter' 
+                           : 'translate-y-16 opacity-0'
+                       }`}
+                       style={{ transitionDelay: '200ms' }}
+                     >
+                       <h2 className="text-xl md:text-2xl font-bold text-white mb-6">Send a Message</h2>
                   
                   <form className="space-y-6 flex-1 flex flex-col" onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -284,24 +332,48 @@ Please contact: ${formData.email}
                            <span className="text-xs">Please try again or contact us directly at bilalmalik746429@gmail.com</span>
                          </div>
                        </div>
-                     )}
-                  </form>
-                </div>
-              </div>
+                                          )}
+                   </form>
+                 </div>
+               </div>
+             );
+           })()}
             </div>
 
                          {/* FAQ Section - Full Width Below */}
-             <div className="mb-16 mt-8">
-               <h3 className="text-xl md:text-2xl font-bold text-white mb-6 md:mb-8 text-center">Frequently Asked Questions</h3>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-                 {faqs.map((faq, index) => (
-                   <div key={index} className="p-4 md:p-6 rounded-lg bg-background/20">
-                     <h4 className="text-white font-semibold mb-2 md:mb-3 text-sm md:text-base">{faq.question}</h4>
-                     <p className="text-gray-400 text-xs md:text-sm leading-relaxed">{faq.answer}</p>
+             {(() => {
+               const { elementRef: faqRef, isVisible: faqVisible } = useScrollAnimation({
+                 threshold: 0.2,
+                 rootMargin: '0px 0px -100px 0px'
+               });
+
+               return (
+                 <div className="mb-16 mt-8">
+                   <div 
+                     ref={faqRef}
+                     className={`transform transition-all duration-1000 ease-out ${
+                       faqVisible 
+                         ? 'header-enter' 
+                         : 'translate-y-8 opacity-0'
+                     }`}
+                   >
+                     <h3 className="text-xl md:text-2xl font-bold text-white mb-6 md:mb-8 text-center">Frequently Asked Questions</h3>
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+                       {faqs.map((faq, index) => (
+                         <div 
+                           key={index} 
+                           className="p-4 md:p-6 rounded-lg bg-background/20 transform transition-all duration-1000 ease-out"
+                           style={{ transitionDelay: `${index * 100}ms` }}
+                         >
+                           <h4 className="text-white font-semibold mb-2 md:mb-3 text-sm md:text-base">{faq.question}</h4>
+                           <p className="text-gray-400 text-xs md:text-sm leading-relaxed">{faq.answer}</p>
+                         </div>
+                       ))}
+                     </div>
                    </div>
-                 ))}
-               </div>
-             </div>
+                 </div>
+               );
+             })()}
 
             {/* Enhanced Call to Action Section */}
             <div className="text-center">

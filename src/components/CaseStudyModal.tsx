@@ -25,9 +25,29 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
   const sequenceImages = getProjectSequenceImages(project.name);
   const caseStudy = getCaseStudyById(project.id);
 
+  // Extract color classes from project.color (e.g., "bg-teal-500" -> "teal")
+  const colorName = project.color.replace('bg-', '').replace('-500', '');
+  const colorVariants = {
+    'teal': 'from-teal-500/20 to-cyan-500/20 border-teal-500/30',
+    'yellow': 'from-yellow-500/20 to-orange-500/20 border-yellow-500/30',
+    'green': 'from-green-500/20 to-emerald-500/20 border-green-500/30',
+    'pink': 'from-pink-500/20 to-rose-500/20 border-pink-500/30',
+    'blue': 'from-blue-500/20 to-indigo-500/20 border-blue-500/30',
+    'purple': 'from-purple-500/20 to-violet-500/20 border-purple-500/30',
+    'red': 'from-red-500/20 to-pink-500/20 border-red-500/30',
+    'indigo': 'from-indigo-500/20 to-purple-500/20 border-indigo-500/30',
+    'emerald': 'from-emerald-500/20 to-teal-500/20 border-emerald-500/30',
+    'orange': 'from-orange-500/20 to-red-500/20 border-orange-500/30',
+    'cyan': 'from-cyan-500/20 to-blue-500/20 border-cyan-500/30',
+    'violet': 'from-violet-500/20 to-purple-500/20 border-violet-500/30',
+    'rose': 'from-rose-500/20 to-pink-500/20 border-rose-500/30',
+  };
+  
+  const projectColorVariant = colorVariants[colorName as keyof typeof colorVariants] || colorVariants['teal'];
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-[95vw] max-w-7xl max-h-[95vh] md:max-h-[90vh] overflow-y-auto bg-background border-white/20 backdrop-blur-sm scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-full p-4 md:p-6">
+      <DialogContent className={`w-[95vw] max-w-7xl max-h-[95vh] md:max-h-[90vh] overflow-y-auto bg-background backdrop-blur-sm scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-full p-4 md:p-6 ${project.color} bg-opacity-10 border-2 ${project.borderColor} border-opacity-30`}>
         <DialogHeader className="relative">
           <DialogTitle className="text-2xl md:text-3xl lg:text-4xl font-bold text-white text-center">
             {project.title}
@@ -42,7 +62,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
                 {project.name}
               </span>
               {project.featured && (
-                <Badge className="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 text-white border-orange-500/30">
+                <Badge className={`bg-gradient-to-r ${projectColorVariant} text-white`}>
                   Featured
                 </Badge>
               )}
@@ -54,7 +74,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
                 <Badge
                   key={cat}
                   variant="secondary"
-                  className="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 text-white border-orange-500/30 hover:from-orange-500/30 hover:to-yellow-500/30 px-4 py-2 rounded-full"
+                  className={`bg-gradient-to-r ${projectColorVariant} text-white hover:from-${colorName}-500/30 hover:to-${colorName}-600/30 px-4 py-2 rounded-full`}
                 >
                   {cat}
                 </Badge>
@@ -84,12 +104,12 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
           {caseStudy && (
             <div className="space-y-8">
               {/* Key Features */}
-              <div className="space-y-4 p-6 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-2xl border border-teal-500/20">
+              <div className={`space-y-4 p-6 bg-gradient-to-br ${projectColorVariant.replace('/20', '/10').replace('/30', '/20')} rounded-2xl border`}>
                 <h3 className="text-xl md:text-2xl font-bold text-white text-center">Key Features</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {caseStudy.features.map((feature, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <span className="w-2 h-2 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full mt-2 flex-shrink-0"></span>
+                      <span className={`w-2 h-2 bg-gradient-to-r ${projectColorVariant.replace('/20', '').replace('/30', '')} rounded-full mt-2 flex-shrink-0`}></span>
                       <span className="text-white/80">{feature}</span>
                     </div>
                   ))}
@@ -177,7 +197,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
                 <Badge
                   key={tech}
                   variant="secondary"
-                  className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border-blue-500/30 hover:from-blue-500/30 hover:to-purple-500/30 px-4 py-2 rounded-full"
+                  className={`bg-gradient-to-r ${projectColorVariant} text-white hover:from-${colorName}-500/30 hover:to-${colorName}-600/30 px-4 py-2 rounded-full`}
                 >
                   {tech}
                 </Badge>
@@ -189,7 +209,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }: CaseStudyModalProps) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
             {project.liveUrl && (
               <Button 
-                className="px-8 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-orange-600 hover:to-yellow-600 rounded-full text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
+                className={`px-8 py-3 bg-gradient-to-r ${projectColorVariant.replace('/20', '').replace('/30', '')} text-white hover:from-${colorName}-600 hover:to-${colorName}-700 rounded-full text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2`}
                 onClick={() => window.open(project.liveUrl, '_blank')}
               >
                 <ExternalLink className="w-4 h-4" />
